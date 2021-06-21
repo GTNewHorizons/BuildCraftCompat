@@ -67,7 +67,7 @@ dependencies {
         exclude module: "buildcraft"
     }
     compile name: "MineTweaker3", version: "1.7.10-3.0.9C", classifier: "Dev"
-    compile ("appeng:appliedenergistics2:rv3-beta-48:dev") {
+    compile ("appeng:appliedenergistics2:rv3-beta-48-GTNH:dev") {
         transitive = false
     }
 }
