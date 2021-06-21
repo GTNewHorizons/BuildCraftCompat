@@ -32,10 +32,6 @@ repositories {
     maven {
         url = "http://mobiusstrip.eu/maven"
     }
-    maven {
-        name = "Qmunity"
-        url = "http://maven.quetzi.net/"
-    }
 	maven {
         url = "http://downloads.gtnewhorizons.com/Mods_for_Jenkins/"
     }
