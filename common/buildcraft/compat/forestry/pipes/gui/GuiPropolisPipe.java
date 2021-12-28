@@ -75,11 +75,6 @@ public class GuiPropolisPipe extends GuiBuildCraft {
 		fontRendererObj.drawString(title, getCenteredOffset(title), 6, 0x303030);
 	}
 
-	@Override
-	protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int p_146976_2_, int p_146976_3_) {
-		
-	}
-
 	class TypeFilterSlot extends Widget {
 
 		private final ForgeDirection orientation;
