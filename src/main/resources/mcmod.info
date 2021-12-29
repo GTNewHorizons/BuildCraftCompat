@@ -1,9 +1,9 @@
 [
 {
-  "modid": "BuildCraft|Compat",
-  "name": "BuildCraft Compat",
-  "version": "$version",
-  "mcversion": "$mcversion",
+  "modid": "${modId}",
+  "name": "${modName}",
+  "version": "${modVersion}",
+  "mcversion": "${minecraftVersion}",
   "description": "Compatibility add-on for BuildCraft",
   "credits": "Created by asie",
   "url": "http://www.mod-buildcraft.com/",

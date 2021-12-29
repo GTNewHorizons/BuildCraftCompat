@@ -32,7 +32,7 @@ import buildcraft.gui.CompatGuiHandler;
 import buildcraft.network.PacketHandlerCompat;
 import buildcraft.texture.TextureManager;
 
-@Mod(name = "BuildCraft Compat", version = "@VERSION@", useMetadata = false, modid = "BuildCraft|Compat", acceptedMinecraftVersions = "[1.7.10,1.8)", dependencies = "required-after:Forge@[10.13.0.1179,);required-after:BuildCraft|Core;after:Forestry;after:BuildCraft|Transport;after:BuildCraft|Builders;after:ThermalExpansion")
+@Mod(name = "BuildCraft Compat", version = "GRADLETOKEN_VERSION", useMetadata = false, modid = "BuildCraft|Compat", acceptedMinecraftVersions = "[1.7.10,1.8)", dependencies = "required-after:Forge@[10.13.0.1179,);required-after:BuildCraft|Core;after:Forestry;after:BuildCraft|Transport;after:BuildCraft|Builders;after:ThermalExpansion")
 public class BuildCraftCompat extends BuildCraftMod {
     @Mod.Instance("BuildCraft|Compat")
     public static BuildCraftCompat instance;
