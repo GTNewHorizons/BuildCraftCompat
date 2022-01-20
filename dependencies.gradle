@@ -1,42 +1,42 @@
 // Add your dependencies here
 
 dependencies {
-    compile("com.github.GTNewHorizons:BuildCraft:master-SNAPSHOT:dev")
-    compile("com.github.GTNewHorizons:CodeChickenLib:master-SNAPSHOT:dev")
+    compile("com.github.GTNewHorizons:BuildCraft:7.1.24:dev")
+    compile("com.github.GTNewHorizons:CodeChickenLib:1.1.5.1:dev")
 
     compile("curse.maven:cofh-lib-220333:2388748")
 
-    compileOnly("com.github.GTNewHorizons:ProjectRed:master-SNAPSHOT:dev") {
+    compileOnly("com.github.GTNewHorizons:ProjectRed:4.7.4:dev") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:waila:master-SNAPSHOT:api") {
+    compileOnly("com.github.GTNewHorizons:waila:1.5.18:api") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:ForgeMultipart:master-SNAPSHOT:dev") {
+    compileOnly("com.github.GTNewHorizons:ForgeMultipart:1.2.7:dev") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:NotEnoughItems:master-SNAPSHOT:dev") {
+    compileOnly("com.github.GTNewHorizons:NotEnoughItems:2.1.22-GTNH:dev") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:ForestryMC:master-SNAPSHOT:api") {
+    compileOnly("com.github.GTNewHorizons:ForestryMC:4.4.4:api") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:EnderIO:master-SNAPSHOT:dev") {
+    compileOnly("com.github.GTNewHorizons:EnderIO:2.3.1.27:dev") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:CraftTweaker:master-SNAPSHOT:dev") {
+    compileOnly("com.github.GTNewHorizons:CraftTweaker:3.2.5:dev") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:ZenScript:master-SNAPSHOT") {
+    compileOnly("com.github.GTNewHorizons:ZenScript:1.0.0-GTNH") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:QmunityLib:master-SNAPSHOT:dev") {
+    compileOnly("com.github.GTNewHorizons:QmunityLib:0.1.115:dev") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:Applied-Energistics-2-Unofficial:master-SNAPSHOT:dev") {
+    compileOnly("com.github.GTNewHorizons:Applied-Energistics-2-Unofficial:rv3-beta-70-GTNH:dev") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:OpenComputers:master-SNAPSHOT:dev") {
+    compileOnly("com.github.GTNewHorizons:OpenComputers:1.7.5.20-GTNH:dev") {
         transitive = false
     }
 
