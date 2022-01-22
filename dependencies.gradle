@@ -3,7 +3,6 @@
 dependencies {
     compile("com.github.GTNewHorizons:BuildCraft:7.1.24:dev")
     compile("com.github.GTNewHorizons:CodeChickenLib:1.1.5.1:dev")
-
     compile("curse.maven:cofh-lib-220333:2388748")
 
     compileOnly("com.github.GTNewHorizons:ProjectRed:4.7.4:dev") {
@@ -39,7 +38,6 @@ dependencies {
     compileOnly("com.github.GTNewHorizons:OpenComputers:1.7.5.20-GTNH:dev") {
         transitive = false
     }
-
     compileOnly("curse.maven:minefactory-reloaded-66672:2366150") {
         transitive = false
     }
@@ -55,7 +53,7 @@ dependencies {
     compileOnly("com.bluepowermod:BluePower:0.2.928:deobf") {
         transitive = false
     }
-    compileOnly files("dependencies/redlogic-59.1.13.jar")
-    compileOnly files("dependencies/immibis-microblocks-59.1.2.jar")
-    compileOnly files("dependencies/immibis-core-59.1.4.jar")
+    compileOnly deobf("https://www.immibis.com/mcmoddl/files/redlogic-59.1.13.jar", "redlogic-59.1.13")
+    compileOnly deobf("https://www.immibis.com/mcmoddl/files/immibis-microblocks-59.1.2.jar", "immibis-microblocks-59.1.2")
+    compileOnly deobf("https://www.immibis.com/mcmoddl/files/immibis-core-59.1.4.jar", "immibis-core-59.1.4")
 }
