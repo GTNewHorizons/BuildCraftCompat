@@ -44,7 +44,7 @@ public class RecipeHandlerIntegrationTable extends RecipeHandlerBase
     }
     
     public void loadTransferRects() {
-        //this.addTransferRect(89, 7, 6, 72);
+        this.addTransferRect(90, 55, 40, 7);
     }
     
     public Class<? extends GuiContainer> getGuiClass() {
