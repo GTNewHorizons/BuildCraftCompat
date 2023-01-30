@@ -41,9 +41,10 @@ dependencies {
     compileOnly("curse.maven:minefactory-reloaded-66672:2366150") {
         transitive = false
     }
-    compileOnly("curse.maven:applemilktea2-229325:2341197") {
-        transitive = false
-    }
+    //compileOnly("curse.maven:applemilktea2-229325:2341197") {
+    //    transitive = false
+    //}
+    compileOnly(files("dependencies/AppleMilkTea2-1.7.10_2.9n.jar"))
     compileOnly("curse.maven:mekanism-268560:2475797") {
         transitive = false
     }
