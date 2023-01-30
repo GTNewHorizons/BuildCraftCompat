@@ -1,26 +1,22 @@
 package buildcraft.compat.multipart;
 
-import buildcraft.api.blueprints.*;
-import codechicken.lib.vec.BlockCoord;
-import codechicken.multipart.TMultiPart;
-import codechicken.multipart.handler.MultipartProxy;
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
-import gnu.trove.map.TObjectIntMap;
-import gnu.trove.map.hash.TObjectIntHashMap;
+import java.util.LinkedList;
+import java.util.Map.Entry;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
+import buildcraft.api.blueprints.*;
+import codechicken.lib.vec.BlockCoord;
+import codechicken.multipart.TMultiPart;
+import codechicken.multipart.handler.MultipartProxy;
+import gnu.trove.map.TObjectIntMap;
+import gnu.trove.map.hash.TObjectIntHashMap;
 
-public final class SchematicMultipartBlock extends SchematicBlock
-{
+public final class SchematicMultipartBlock extends SchematicBlock {
+
     private int rotation = 0;
     private LinkedList<Iterable<ItemStack>> requirements = new LinkedList<Iterable<ItemStack>>();
     private NBTTagList parts;
@@ -45,9 +41,9 @@ public final class SchematicMultipartBlock extends SchematicBlock
                 partList.adjustOrPutValue(tag.getString("type"), 1, 1);
             }
 
-            for(Entry<TMultiPart, SchematicPart> s : MultipartSchematics.getSchematics(context, x, y, z)) {
+            for (Entry<TMultiPart, SchematicPart> s : MultipartSchematics.getSchematics(context, x, y, z)) {
                 String type = s.getKey().getType();
-                partList.adjustOrPutValue( type, -1, -1);
+                partList.adjustOrPutValue(type, -1, -1);
             }
 
             for (String s : partList.keySet()) {
@@ -58,25 +54,14 @@ public final class SchematicMultipartBlock extends SchematicBlock
 
             return true;
 
-            /* Multimap<String, NBTTagCompound> partList = HashMultimap.create();
-
-            for (int i = 0; i < parts.tagCount(); i++) {
-                NBTTagCompound tag = parts.getCompoundTagAt(i);
-                partList.put(tag.getString("type"), tag.getCompoundTag("part"));
-            }
-
-            for(Entry<TMultiPart, SchematicPart> s : MultipartSchematics.getSchematics(context, x, y, z)) {
-                String type = s.getKey().getType();
-                if (!partList.containsKey(type)) {
-                    return false;
-                }
-
-                if (!partList.remove(type, s.getValue().writePart(s.getKey()))) {
-                    return false;
-                }
-            }
-
-            return partList.isEmpty(); */
+            /*
+             * Multimap<String, NBTTagCompound> partList = HashMultimap.create(); for (int i = 0; i < parts.tagCount();
+             * i++) { NBTTagCompound tag = parts.getCompoundTagAt(i); partList.put(tag.getString("type"),
+             * tag.getCompoundTag("part")); } for(Entry<TMultiPart, SchematicPart> s :
+             * MultipartSchematics.getSchematics(context, x, y, z)) { String type = s.getKey().getType(); if
+             * (!partList.containsKey(type)) { return false; } if (!partList.remove(type,
+             * s.getValue().writePart(s.getKey()))) { return false; } } return partList.isEmpty();
+             */
         }
 
         return false;
@@ -84,26 +69,23 @@ public final class SchematicMultipartBlock extends SchematicBlock
 
     @Override
     public void storeRequirements(IBuilderContext context, int x, int y, int z) {
-        for(Entry<TMultiPart, SchematicPart> s : MultipartSchematics.getSchematics(context, x, y, z)) {
+        for (Entry<TMultiPart, SchematicPart> s : MultipartSchematics.getSchematics(context, x, y, z)) {
             Iterable<ItemStack> stacks = s.getValue().getRequirements(s.getKey());
-            if(stacks != null)
-                requirements.add(stacks);
+            if (stacks != null) requirements.add(stacks);
         }
     }
 
     @Override
     public void getRequirementsForPlacement(IBuilderContext context, LinkedList<ItemStack> requirements) {
-        for(Iterable<ItemStack> stacks : this.requirements)
-            for(ItemStack stack : stacks)
-                requirements.add(stack);
+        for (Iterable<ItemStack> stacks : this.requirements) for (ItemStack stack : stacks) requirements.add(stack);
     }
 
     @Override
     public void initializeFromObjectAt(IBuilderContext context, int x, int y, int z) {
         parts = new NBTTagList();
-        for(Entry<TMultiPart, SchematicPart> s : MultipartSchematics.getSchematics(context, x, y, z)) {
+        for (Entry<TMultiPart, SchematicPart> s : MultipartSchematics.getSchematics(context, x, y, z)) {
             NBTTagCompound tag = s.getValue().writePart(s.getKey());
-            if(tag != null) {
+            if (tag != null) {
                 NBTTagCompound tag2 = new NBTTagCompound();
                 tag2.setString("type", s.getKey().getType());
                 tag2.setTag("part", tag);
@@ -115,10 +97,10 @@ public final class SchematicMultipartBlock extends SchematicBlock
     @Override
     public void writeSchematicToNBT(NBTTagCompound nbt, MappingRegistry registry) {
         nbt.setInteger("blockId", registry.getIdForBlock(MultipartProxy.block()));
-        for(int i = 0; i < parts.tagCount(); i++) {
+        for (int i = 0; i < parts.tagCount(); i++) {
             NBTTagCompound partTag = parts.getCompoundTagAt(i);
             NBTTagList items = new NBTTagList();
-            for(ItemStack stack : requirements.get(i)) {
+            for (ItemStack stack : requirements.get(i)) {
                 NBTTagCompound itemTag = new NBTTagCompound();
                 stack.writeToNBT(itemTag);
                 registry.stackToRegistry(itemTag);
@@ -133,10 +115,10 @@ public final class SchematicMultipartBlock extends SchematicBlock
     public void readSchematicFromNBT(NBTTagCompound nbt, MappingRegistry registry) {
         requirements.clear();
         parts = nbt.getTagList("parts", 10);
-        for(int i = 0; i < parts.tagCount(); i++) {
+        for (int i = 0; i < parts.tagCount(); i++) {
             NBTTagCompound tag = parts.getCompoundTagAt(i);
             SchematicPart s = MultipartSchematics.getSchematic(tag.getString("type"));
-            if(s == null || !s.isValid(tag.getCompoundTag("part"))) {
+            if (s == null || !s.isValid(tag.getCompoundTag("part"))) {
                 parts.removeTag(i);
                 continue;
             }
@@ -172,9 +154,10 @@ public final class SchematicMultipartBlock extends SchematicBlock
     @Override
     public void placeInWorld(IBuilderContext context, int x, int y, int z, LinkedList<ItemStack> stacks) {
         BlockCoord pos = new BlockCoord(x, y, z);
-        for(int i = 0; i < parts.tagCount(); i++) {
+        for (int i = 0; i < parts.tagCount(); i++) {
             NBTTagCompound tag = parts.getCompoundTagAt(i);
-            MultipartSchematics.getSchematic(tag.getString("type")).placePart(context, pos, tag.getCompoundTag("part"), rotation);
+            MultipartSchematics.getSchematic(tag.getString("type"))
+                    .placePart(context, pos, tag.getCompoundTag("part"), rotation);
         }
     }
 

@@ -1,13 +1,12 @@
 package buildcraft.compat;
 
+import buildcraft.compat.bigreactors.SchematicBRCreativePart;
+import buildcraft.compat.bigreactors.SchematicBRPart;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Optional;
 
-import buildcraft.compat.bigreactors.SchematicBRCreativePart;
-import buildcraft.compat.bigreactors.SchematicBRPart;
+public class CompatModuleBigReactors extends CompatModuleBase {
 
-public class CompatModuleBigReactors extends CompatModuleBase
-{
     @Override
     public String name() {
         return "BigReactors";

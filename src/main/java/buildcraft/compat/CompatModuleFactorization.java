@@ -2,20 +2,22 @@ package buildcraft.compat;
 
 import java.util.Map;
 
-import com.google.common.collect.MapMaker;
-
 import net.minecraft.tileentity.TileEntity;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.Optional;
 
 import buildcraft.BuildCraftCompat;
 import buildcraft.api.blueprints.SchematicTile;
 import buildcraft.compat.factorization.ChargeEnergyReceiver;
 import buildcraft.compat.factorization.SchematicFZBarrel;
 import buildcraft.compat.factorization.SchematicFZBase;
+
+import com.google.common.collect.MapMaker;
+
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.Optional;
 import factorization.api.IChargeConductor;
 
 public class CompatModuleFactorization extends CompatModuleBase {
+
     public static float CHARGE_PER_RF = 0.13F;
     public static boolean ENABLE_ENERGY = false;
     public static boolean ENABLE_SERVO_RAILS = false;
@@ -25,7 +27,7 @@ public class CompatModuleFactorization extends CompatModuleBase {
     public String name() {
         return "factorization";
     }
-    
+
     @Override
     public boolean canLoad() {
         return super.canLoad();
@@ -33,8 +35,13 @@ public class CompatModuleFactorization extends CompatModuleBase {
 
     @Override
     public void preInit() {
-        //ENABLE_ENERGY = BuildCraftCompat.instance.getConfig().getBoolean("tweaks", "energyBridgeCharge", false, "Allow BC Kinesis Pipes to emit Charge.");
-        ENABLE_SERVO_RAILS = BuildCraftCompat.instance.getConfig().getBoolean("builderServoRails", "balance", true, "Should Builders place (pre-configured) Servo Rails?");
+        // ENABLE_ENERGY = BuildCraftCompat.instance.getConfig().getBoolean("tweaks", "energyBridgeCharge", false,
+        // "Allow BC Kinesis Pipes to emit Charge.");
+        ENABLE_SERVO_RAILS = BuildCraftCompat.instance.getConfig().getBoolean(
+                "builderServoRails",
+                "balance",
+                true,
+                "Should Builders place (pre-configured) Servo Rails?");
     }
 
     @Override

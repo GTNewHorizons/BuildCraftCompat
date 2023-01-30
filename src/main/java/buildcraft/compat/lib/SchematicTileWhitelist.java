@@ -10,44 +10,45 @@ import buildcraft.api.blueprints.IBuilderContext;
 import buildcraft.api.blueprints.SchematicTile;
 
 public class SchematicTileWhitelist extends SchematicTile {
-	private final List<String> whitelistNBT = new ArrayList<String>();
-	private final boolean ignoreDrops;
 
-	public SchematicTileWhitelist(String[] whitelist, boolean ignoreDrops) {
-		for (String s : whitelist) {
-			whitelistNBT.add(s);
-		}
-		this.ignoreDrops = ignoreDrops;
-	}
+    private final List<String> whitelistNBT = new ArrayList<String>();
+    private final boolean ignoreDrops;
 
-	public SchematicTileWhitelist() {
-		this.ignoreDrops = false;
-	}
+    public SchematicTileWhitelist(String[] whitelist, boolean ignoreDrops) {
+        for (String s : whitelist) {
+            whitelistNBT.add(s);
+        }
+        this.ignoreDrops = ignoreDrops;
+    }
 
-	@Override
-	public void storeRequirements(IBuilderContext context, int x, int y, int z) {
-		if (ignoreDrops) {
-			storedRequirements = new ItemStack[1];
-			storedRequirements[0] = new ItemStack(this.block, 1, this.meta);
-		} else {
-			super.storeRequirements(context, x, y, z);
-		}
-	}
+    public SchematicTileWhitelist() {
+        this.ignoreDrops = false;
+    }
 
-	@Override
-	public void initializeFromObjectAt (IBuilderContext context, int x, int y, int z) {
-		super.initializeFromObjectAt(context, x, y, z);
-		if (tileNBT != null && whitelistNBT.size() > 0) {
-			NBTTagCompound source = tileNBT;
-			tileNBT = new NBTTagCompound();
+    @Override
+    public void storeRequirements(IBuilderContext context, int x, int y, int z) {
+        if (ignoreDrops) {
+            storedRequirements = new ItemStack[1];
+            storedRequirements[0] = new ItemStack(this.block, 1, this.meta);
+        } else {
+            super.storeRequirements(context, x, y, z);
+        }
+    }
 
-			tileNBT.setTag("id", source.getTag("id"));
+    @Override
+    public void initializeFromObjectAt(IBuilderContext context, int x, int y, int z) {
+        super.initializeFromObjectAt(context, x, y, z);
+        if (tileNBT != null && whitelistNBT.size() > 0) {
+            NBTTagCompound source = tileNBT;
+            tileNBT = new NBTTagCompound();
 
-			for (String s : whitelistNBT) {
-				if (source.hasKey(s)) {
-					tileNBT.setTag(s, source.getTag(s));
-				}
-			}
-		}
-	}
+            tileNBT.setTag("id", source.getTag("id"));
+
+            for (String s : whitelistNBT) {
+                if (source.hasKey(s)) {
+                    tileNBT.setTag(s, source.getTag(s));
+                }
+            }
+        }
+    }
 }

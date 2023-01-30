@@ -1,26 +1,30 @@
 package buildcraft.compat;
 
+import net.minecraft.block.*;
+
 import buildcraft.api.blueprints.*;
 import buildcraft.compat.multipart.*;
-import net.minecraft.block.*;
 import codechicken.multipart.handler.*;
 import cpw.mods.fml.common.*;
 
-public class CompatModuleFMP extends CompatModuleBase
-{
+public class CompatModuleFMP extends CompatModuleBase {
+
     @Override
     public String name() {
         return "ForgeMultipart";
     }
-    
+
     @Override
     public boolean canLoad() {
         return super.canLoad() && Loader.isModLoaded("BuildCraft|Builders");
     }
-    
+
     @Override
     public void init() {
-        BuilderAPI.schematicRegistry.registerSchematicBlock(this.getMultipartProxyBlock(), (Class)SchematicMultipartBlock.class, new Object[0]);
+        BuilderAPI.schematicRegistry.registerSchematicBlock(
+                this.getMultipartProxyBlock(),
+                (Class) SchematicMultipartBlock.class,
+                new Object[0]);
         MultipartSchematics.registerSchematic("mcr_face", new SchematicMicroblock("mcr_face"));
         MultipartSchematics.registerSchematic("mcr_cnr", new SchematicMicroblock("mcr_cnr"));
         MultipartSchematics.registerSchematic("mcr_edge", new SchematicMicroblock("mcr_edge"));
@@ -31,9 +35,9 @@ public class CompatModuleFMP extends CompatModuleBase
         MultipartSchematics.registerSchematic("mc_button", new SchematicMcMetaPart("mc_button"));
         MultipartSchematics.registerSchematic("mc_redtorch", new SchematicMcMetaPart("mc_redtorch"));
     }
-    
+
     @Optional.Method(modid = "ForgeMultipart")
     public Block getMultipartProxyBlock() {
-        return (Block)MultipartProxy.block();
+        return (Block) MultipartProxy.block();
     }
 }

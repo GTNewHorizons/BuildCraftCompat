@@ -3,26 +3,26 @@ package buildcraft.compat;
 import java.util.HashSet;
 import java.util.Set;
 
-import buildcraft.BuildCraftCompat;
+import mods.immibis.core.api.multipart.ICoverableTile;
+
 import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.Optional;
 
+import buildcraft.BuildCraftCompat;
 import buildcraft.api.blueprints.SchematicTile;
 import buildcraft.api.core.BCLog;
 import buildcraft.compat.immibis.FakeWorldIMTesting;
 import buildcraft.compat.immibis.SchematicTileMicroblocks;
 import buildcraft.compat.immibis.SchematicTileMicroblocksBase;
 import buildcraft.core.blueprints.SchematicRegistry;
-import mods.immibis.core.api.multipart.ICoverableTile;
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.Optional;
 
 public class CompatModuleImmibisMicroblocks extends CompatModuleBase {
+
     private Set<String> fcSet = new HashSet<>();
-    private String[] forbiddenClasses = new String[] {
-            "ic2.core.block.BlockMultiID"
-    };
+    private String[] forbiddenClasses = new String[] { "ic2.core.block.BlockMultiID" };
 
     @Override
     public String name() {
@@ -36,7 +36,11 @@ public class CompatModuleImmibisMicroblocks extends CompatModuleBase {
 
     @Override
     public void preInit() {
-        forbiddenClasses = BuildCraftCompat.instance.getConfig().getStringList("forbiddenClasses", "immibismicroblocks", forbiddenClasses, "A list of block classes which should be ignored in the Immibis' Microblocks heuristics due to crashes.");
+        forbiddenClasses = BuildCraftCompat.instance.getConfig().getStringList(
+                "forbiddenClasses",
+                "immibismicroblocks",
+                forbiddenClasses,
+                "A list of block classes which should be ignored in the Immibis' Microblocks heuristics due to crashes.");
 
         fcSet.clear();
         for (String s : forbiddenClasses) {
@@ -80,7 +84,7 @@ public class CompatModuleImmibisMicroblocks extends CompatModuleBase {
 
             if (b.hasTileEntity(meta)) {
                 try {
-					TileEntity t = b.createTileEntity(test, meta);
+                    TileEntity t = b.createTileEntity(test, meta);
                     isImmibis = t instanceof ICoverableTile;
                 } catch (Exception e) {
 

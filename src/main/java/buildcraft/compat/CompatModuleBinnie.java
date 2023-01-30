@@ -1,16 +1,15 @@
 package buildcraft.compat;
 
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.Optional;
-
 import buildcraft.compat.binnie.SchematicTileCarpentry;
 import buildcraft.compat.lib.SchematicTileDoor;
 import buildcraft.compat.lib.SchematicTileDropsOnly;
 import buildcraft.compat.lib.SchematicTileStairs;
 import buildcraft.core.builders.schematics.SchematicRotateMeta;
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.Optional;
 
-public class CompatModuleBinnie extends CompatModuleBase
-{
+public class CompatModuleBinnie extends CompatModuleBase {
+
     @Override
     public String name() {
         return "BinnieMods";
@@ -36,8 +35,8 @@ public class CompatModuleBinnie extends CompatModuleBase
         CompatUtils.registerSchematic("ExtraTrees:planks", SchematicTileDropsOnly.class);
         CompatUtils.registerSchematic("ExtraTrees:stairs", SchematicTileStairs.class);
         CompatUtils.registerSchematic("ExtraTrees:door", SchematicTileDoor.class);
-        CompatUtils.registerSchematic("ExtraTrees:gate", SchematicRotateMeta.class, new int[]{0, 1, 2, 3}, true);
-        CompatUtils.registerSchematic("ExtraTrees:log", SchematicRotateMeta.class, new int[]{8, 4, 8, 4}, true);
+        CompatUtils.registerSchematic("ExtraTrees:gate", SchematicRotateMeta.class, new int[] { 0, 1, 2, 3 }, true);
+        CompatUtils.registerSchematic("ExtraTrees:log", SchematicRotateMeta.class, new int[] { 8, 4, 8, 4 }, true);
         CompatUtils.registerSchematic("ExtraTrees:stainedglass", SchematicTileCarpentry.class);
         CompatUtils.registerSchematic("ExtraTrees:carpentry", SchematicTileCarpentry.class);
 

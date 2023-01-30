@@ -1,13 +1,12 @@
 package buildcraft.compat;
 
+import buildcraft.compat.immersiveengineering.SchematicIEBase;
+import buildcraft.compat.immersiveengineering.SchematicIESupported;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Optional;
 
-import buildcraft.compat.immersiveengineering.SchematicIEBase;
-import buildcraft.compat.immersiveengineering.SchematicIESupported;
+public class CompatModuleImmersiveEngineering extends CompatModuleBase {
 
-public class CompatModuleImmersiveEngineering extends CompatModuleBase
-{
     @Override
     public String name() {
         return "ImmersiveEngineering";
@@ -28,8 +27,10 @@ public class CompatModuleImmersiveEngineering extends CompatModuleBase
     @Optional.Method(modid = "BuildCraft|Builders")
     private void initBuilders() {
         CompatUtils.registerSchematic("ImmersiveEngineering:metalDecoration", 2, SchematicIESupported.class); // Lantern
-        CompatUtils.registerSchematic("ImmersiveEngineering:metalDecoration", 3, SchematicIEBase.class); // Structural Arm
-        //CompatUtils.registerSchematic("ImmersiveEngineering:metalDevice", 9, SchematicIEBase.class); // Kinetic Dynamo
+        CompatUtils.registerSchematic("ImmersiveEngineering:metalDecoration", 3, SchematicIEBase.class); // Structural
+                                                                                                         // Arm
+        // CompatUtils.registerSchematic("ImmersiveEngineering:metalDevice", 9, SchematicIEBase.class); // Kinetic
+        // Dynamo
         CompatUtils.registerSchematic("ImmersiveEngineering:metalDevice", 10, SchematicIEBase.class); // Thermoelectric
         CompatUtils.registerSchematic("ImmersiveEngineering:metalDevice", 11, SchematicIEBase.class); // Conveyor Belt
         CompatUtils.registerSchematic("ImmersiveEngineering:metalDevice2", 0, SchematicIESupported.class); // Breaker

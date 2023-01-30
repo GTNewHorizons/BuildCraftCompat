@@ -5,13 +5,11 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
-import buildcraft.BuildCraftCompat;
-import buildcraft.BuildCraftMod;
-import buildcraft.api.core.BCLog;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
+import buildcraft.api.core.BCLog;
 import buildcraft.api.recipes.BuildcraftRecipeRegistry;
 import buildcraft.api.recipes.IIntegrationRecipe;
 import buildcraft.silicon.gui.ContainerIntegrationTable;
@@ -20,50 +18,58 @@ import codechicken.lib.gui.GuiDraw;
 import codechicken.nei.PositionedStack;
 import codechicken.nei.api.API;
 
-public class RecipeHandlerIntegrationTable extends RecipeHandlerBase
-{
+public class RecipeHandlerIntegrationTable extends RecipeHandlerBase {
+
     private static final HashMap<IIntegrationRecipe, CachedIntegrationTableRecipe> recipeCache = new HashMap<IIntegrationRecipe, CachedIntegrationTableRecipe>();
     private static Class<? extends GuiContainer> guiClass;
-    
+
     @Override
     public void prepare() {
-        API.setGuiOffset((Class)(RecipeHandlerIntegrationTable.guiClass = (Class<? extends GuiContainer>)GuiIntegrationTable.class), 5, 18);
+        API.setGuiOffset(
+                (Class) (RecipeHandlerIntegrationTable.guiClass = (Class<? extends GuiContainer>) GuiIntegrationTable.class),
+                5,
+                18);
     }
-    
+
     public String getRecipeName() {
         return StatCollector.translateToLocal("tile.integrationTableBlock.name");
     }
-    
+
     @Override
     public String getRecipeID() {
         return "buildcraft.integrationTable";
     }
-    
+
     public String getGuiTexture() {
         return "buildcraftsilicon:textures/gui/integration_table.png";
     }
-    
+
     public void loadTransferRects() {
         this.addTransferRect(90, 55, 40, 7);
     }
-    
+
     public Class<? extends GuiContainer> getGuiClass() {
         return RecipeHandlerIntegrationTable.guiClass;
     }
-    
+
     public int recipiesPerPage() {
         return 2;
     }
-    
+
     public void drawBackground(final int recipe) {
         this.changeToGuiTexture();
         GuiDraw.drawTexturedModalRect(0, 5, 5, 18, 166, 80);
     }
-    
+
     public void drawExtras(final int recipe) {
-        GuiDraw.drawStringC(((CachedIntegrationTableRecipe) this.arecipes.get(recipe)).energy + " RF", 108, 10, 8421504, false);
+        GuiDraw.drawStringC(
+                ((CachedIntegrationTableRecipe) this.arecipes.get(recipe)).energy + " RF",
+                108,
+                10,
+                8421504,
+                false);
     }
-    
+
     @Override
     public void loadAllRecipes() {
         for (final IIntegrationRecipe recipe : BuildcraftRecipeRegistry.integrationTable.getRecipes()) {
@@ -72,12 +78,12 @@ public class RecipeHandlerIntegrationTable extends RecipeHandlerBase
     }
 
     private CachedIntegrationTableRecipe createRecipe(IIntegrationRecipe recipe) {
-        //if (!recipeCache.containsKey(recipe)) {
-        //    recipeCache.put(recipe, new CachedIntegrationTableRecipe(recipe));
-        //}
-        //CachedIntegrationTableRecipe r = recipeCache.get(recipe);
-        //r.expectedOutput = null;
-        //return r;
+        // if (!recipeCache.containsKey(recipe)) {
+        // recipeCache.put(recipe, new CachedIntegrationTableRecipe(recipe));
+        // }
+        // CachedIntegrationTableRecipe r = recipeCache.get(recipe);
+        // r.expectedOutput = null;
+        // return r;
         return new CachedIntegrationTableRecipe(recipe);
     }
 
@@ -88,15 +94,17 @@ public class RecipeHandlerIntegrationTable extends RecipeHandlerBase
             if (!crecipe.outputs.contains(result)) {
                 continue;
             }
-            //crecipe.expectedOutput = result;
+            // crecipe.expectedOutput = result;
             if (crecipe.getResult() == null) {
-                BCLog.logger.warn("IntegrationRecipe with null result detected: " + crecipe.getClass().getName() + ". This is a bug!");
+                BCLog.logger.warn(
+                        "IntegrationRecipe with null result detected: " + crecipe.getClass().getName()
+                                + ". This is a bug!");
                 continue;
             }
             this.arecipes.add(crecipe);
         }
     }
-    
+
     @Override
     public void loadUsageRecipes(final ItemStack ingredient) {
         for (final IIntegrationRecipe recipe : BuildcraftRecipeRegistry.integrationTable.getRecipes()) {
@@ -111,12 +119,13 @@ public class RecipeHandlerIntegrationTable extends RecipeHandlerBase
             if (!found) {
                 continue;
             }
-            crecipe.setIngredientPermutation((Collection)crecipe.inputs, ingredient);
+            crecipe.setIngredientPermutation((Collection) crecipe.inputs, ingredient);
             this.arecipes.add(crecipe);
         }
     }
-    
+
     public class CachedIntegrationTableRecipe extends CachedBaseRecipe {
+
         public final List<PositionedStack> inputs;
         public final PositionedStack outputs;
         public final int energy;
@@ -129,7 +138,12 @@ public class RecipeHandlerIntegrationTable extends RecipeHandlerBase
             this.recipe = recipe;
             this.energy = recipe.getEnergyCost();
             this.inputs = new ArrayList<PositionedStack>(9);
-            this.inputs.add(new PositionedStack(exampleInputs, ContainerIntegrationTable.SLOT_X[0] - 5, ContainerIntegrationTable.SLOT_Y[0] - 13, true));
+            this.inputs.add(
+                    new PositionedStack(
+                            exampleInputs,
+                            ContainerIntegrationTable.SLOT_X[0] - 5,
+                            ContainerIntegrationTable.SLOT_Y[0] - 13,
+                            true));
             int iMax = 0;
             for (ItemStack input : exampleInputs) {
                 int v = recipe.getMaximumExpansionCount(input);
@@ -146,11 +160,15 @@ public class RecipeHandlerIntegrationTable extends RecipeHandlerBase
 
             for (int i = 0; i < iMax; i++) {
                 List<ItemStack> exp = expansionExamples.get(i % expansionExamples.size());
-                //List<ItemStack> target = new ArrayList<ItemStack>();
-                //target.add(new ItemStack(Blocks.air));
-                //target.addAll(exp);
-                this.inputs.add(new PositionedStack(exp,
-                        ContainerIntegrationTable.SLOT_X[i + 1] - 5, ContainerIntegrationTable.SLOT_Y[i + 1] - 13, true));
+                // List<ItemStack> target = new ArrayList<ItemStack>();
+                // target.add(new ItemStack(Blocks.air));
+                // target.addAll(exp);
+                this.inputs.add(
+                        new PositionedStack(
+                                exp,
+                                ContainerIntegrationTable.SLOT_X[i + 1] - 5,
+                                ContainerIntegrationTable.SLOT_Y[i + 1] - 13,
+                                true));
             }
 
             this.outputs = new PositionedStack(recipe.getExampleOutput(), 138 - 5, 49 - 13, true);
@@ -158,7 +176,7 @@ public class RecipeHandlerIntegrationTable extends RecipeHandlerBase
 
         @Override
         public PositionedStack getResult() {
-            List<PositionedStack> ingr = this.getCycledIngredients(cycleticks / 20, (List)this.inputs);
+            List<PositionedStack> ingr = this.getCycledIngredients(cycleticks / 20, (List) this.inputs);
             ItemStack input = ingr.get(0).item;
             List<ItemStack> exps = new ArrayList<ItemStack>();
             for (int i = 1; i < ingr.size(); i++) {
@@ -173,7 +191,7 @@ public class RecipeHandlerIntegrationTable extends RecipeHandlerBase
         }
 
         public List<PositionedStack> getIngredients() {
-            return (List<PositionedStack>)this.getCycledIngredients(cycleticks / 20, (List)this.inputs);
+            return (List<PositionedStack>) this.getCycledIngredients(cycleticks / 20, (List) this.inputs);
         }
     }
 }

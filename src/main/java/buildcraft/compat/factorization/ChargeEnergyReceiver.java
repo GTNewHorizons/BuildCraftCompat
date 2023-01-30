@@ -3,52 +3,53 @@ package buildcraft.compat.factorization;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 
-import cofh.api.energy.IEnergyReceiver;
 import buildcraft.compat.CompatModuleFactorization;
+import cofh.api.energy.IEnergyReceiver;
 import factorization.api.Charge;
 import factorization.api.IChargeConductor;
 
 public class ChargeEnergyReceiver implements IEnergyReceiver {
-	private final Charge charge;
-	private final IChargeConductor conductor;
-	private int microFluxes;
 
-	public ChargeEnergyReceiver(TileEntity chargeConductor) {
-		this.conductor = (IChargeConductor) chargeConductor;
-		this.charge = conductor.getCharge();
-	}
+    private final Charge charge;
+    private final IChargeConductor conductor;
+    private int microFluxes;
 
-	@Override
-	public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate) {
-		int maxCharge = Math.min(5, 100 - charge.getValue());
-		if (maxCharge < 0) {
-			return 0;
-		}
+    public ChargeEnergyReceiver(TileEntity chargeConductor) {
+        this.conductor = (IChargeConductor) chargeConductor;
+        this.charge = conductor.getCharge();
+    }
 
-		int rfToUse = (int) Math.floor(maxCharge / CompatModuleFactorization.CHARGE_PER_RF);
+    @Override
+    public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate) {
+        int maxCharge = Math.min(5, 100 - charge.getValue());
+        if (maxCharge < 0) {
+            return 0;
+        }
 
-		if (!simulate) {
-			int chargeVal = (int) Math.floor(maxCharge + (microFluxes * CompatModuleFactorization.CHARGE_PER_RF));
-			int rfInserted = (int) Math.floor(chargeVal / CompatModuleFactorization.CHARGE_PER_RF);
-			microFluxes += (rfToUse - rfInserted);
-			charge.addValue(chargeVal);
-		}
+        int rfToUse = (int) Math.floor(maxCharge / CompatModuleFactorization.CHARGE_PER_RF);
 
-		return rfToUse;
-	}
+        if (!simulate) {
+            int chargeVal = (int) Math.floor(maxCharge + (microFluxes * CompatModuleFactorization.CHARGE_PER_RF));
+            int rfInserted = (int) Math.floor(chargeVal / CompatModuleFactorization.CHARGE_PER_RF);
+            microFluxes += (rfToUse - rfInserted);
+            charge.addValue(chargeVal);
+        }
 
-	@Override
-	public int getEnergyStored(ForgeDirection from) {
-		return (int) Math.floor(charge.getValue() / CompatModuleFactorization.CHARGE_PER_RF);
-	}
+        return rfToUse;
+    }
 
-	@Override
-	public int getMaxEnergyStored(ForgeDirection from) {
-		return getEnergyStored(from) + 1;
-	}
+    @Override
+    public int getEnergyStored(ForgeDirection from) {
+        return (int) Math.floor(charge.getValue() / CompatModuleFactorization.CHARGE_PER_RF);
+    }
 
-	@Override
-	public boolean canConnectEnergy(ForgeDirection from) {
-		return true;
-	}
+    @Override
+    public int getMaxEnergyStored(ForgeDirection from) {
+        return getEnergyStored(from) + 1;
+    }
+
+    @Override
+    public boolean canConnectEnergy(ForgeDirection from) {
+        return true;
+    }
 }

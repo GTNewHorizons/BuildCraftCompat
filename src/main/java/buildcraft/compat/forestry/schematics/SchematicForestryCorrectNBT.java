@@ -1,8 +1,9 @@
 package buildcraft.compat.forestry.schematics;
 
 public class SchematicForestryCorrectNBT extends SchematicTileForestry {
-	@Override
-	public boolean shouldClearNBT() {
-		return false;
-	}
+
+    @Override
+    public boolean shouldClearNBT() {
+        return false;
+    }
 }

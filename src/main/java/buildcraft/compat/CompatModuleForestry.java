@@ -1,17 +1,12 @@
 package buildcraft.compat;
 
-import buildcraft.api.crops.CropManager;
-import buildcraft.compat.forestry.CropHandlerForestry;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.Optional;
-import cpw.mods.fml.common.event.FMLMissingMappingsEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraftforge.client.MinecraftForgeClient;
 
 import buildcraft.BuildCraftTransport;
+import buildcraft.api.crops.CropManager;
+import buildcraft.compat.forestry.CropHandlerForestry;
 import buildcraft.compat.forestry.pipes.PipeItemsPropolis;
 import buildcraft.compat.forestry.schematics.SchematicForestryFarmBlock;
 import buildcraft.compat.forestry.schematics.SchematicForestryWorktable;
@@ -20,17 +15,22 @@ import buildcraft.compat.forestry.schematics.SchematicTileStairsForestry;
 import buildcraft.core.BCCreativeTab;
 import buildcraft.transport.BlockGenericPipe;
 import buildcraft.transport.TransportProxyClient;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.Optional;
+import cpw.mods.fml.common.event.FMLMissingMappingsEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
 import forestry.api.apiculture.IBeeRoot;
 import forestry.api.genetics.AlleleManager;
 import forestry.api.genetics.IAlleleRegistry;
 
-public class CompatModuleForestry extends CompatModuleBase
-{
+public class CompatModuleForestry extends CompatModuleBase {
+
     public static IBeeRoot beeRoot;
 
     /** Pipe used to sort bees from Forestry. */
     private static Item pipeItemsPropolis;
-    
+
     @Override
     public String name() {
         return "Forestry";
@@ -80,10 +80,18 @@ public class CompatModuleForestry extends CompatModuleBase
             pipeItemsPropolis = BlockGenericPipe.registerPipe(PipeItemsPropolis.class, BCCreativeTab.get("pipes"));
 
             if (FMLCommonHandler.instance().getSide().isClient()) {
-                MinecraftForgeClient.registerItemRenderer(CompatModuleForestry.pipeItemsPropolis, TransportProxyClient.pipeItemRenderer);
+                MinecraftForgeClient.registerItemRenderer(
+                        CompatModuleForestry.pipeItemsPropolis,
+                        TransportProxyClient.pipeItemRenderer);
             }
 
-            GameRegistry.addRecipe(new ItemStack(pipeItemsPropolis), "#X#", '#', propolis, 'X', BuildCraftTransport.pipeItemsDiamond);
+            GameRegistry.addRecipe(
+                    new ItemStack(pipeItemsPropolis),
+                    "#X#",
+                    '#',
+                    propolis,
+                    'X',
+                    BuildCraftTransport.pipeItemsDiamond);
         }
     }
 

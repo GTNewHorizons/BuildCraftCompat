@@ -1,15 +1,14 @@
 package buildcraft.compat;
 
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.Optional;
-
 import buildcraft.compat.redlogic.SchematicRLButton;
 import buildcraft.compat.redlogic.SchematicRLGate;
 import buildcraft.compat.redlogic.SchematicRLLampNonCube;
 import buildcraft.compat.redlogic.SchematicRLWire;
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.Optional;
 
-public class CompatModuleRedLogic extends CompatModuleBase
-{
+public class CompatModuleRedLogic extends CompatModuleBase {
+
     @Override
     public String name() {
         return "RedLogic";

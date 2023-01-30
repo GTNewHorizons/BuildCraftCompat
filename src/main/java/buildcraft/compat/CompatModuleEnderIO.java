@@ -2,12 +2,12 @@ package buildcraft.compat;
 
 import net.minecraft.block.Block;
 import net.minecraft.nbt.NBTTagCompound;
-import cpw.mods.fml.common.event.FMLInterModComms;
 
 import buildcraft.core.BlockEngine;
+import cpw.mods.fml.common.event.FMLInterModComms;
 
-public class CompatModuleEnderIO extends CompatModuleBase
-{
+public class CompatModuleEnderIO extends CompatModuleBase {
+
     @Override
     public String name() {
         return "EnderIO";

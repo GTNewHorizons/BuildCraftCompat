@@ -1,15 +1,12 @@
 package buildcraft.compat;
 
-import buildcraft.BuildCraftTransport;
-import buildcraft.core.InterModComms;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.event.FMLInterModComms;
-import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.block.Block;
 import net.minecraft.nbt.NBTTagCompound;
 
-public class CompatModuleAquaTweaks extends CompatModuleBase
-{
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.event.FMLInterModComms;
+
+public class CompatModuleAquaTweaks extends CompatModuleBase {
+
     @Override
     public String name() {
         return "AquaTweaks";

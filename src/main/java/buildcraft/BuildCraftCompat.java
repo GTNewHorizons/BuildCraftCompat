@@ -3,17 +3,6 @@ package buildcraft;
 import java.io.File;
 import java.util.HashSet;
 
-import buildcraft.api.core.BuildCraftAPI;
-import buildcraft.compat.*;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLMissingMappingsEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
@@ -23,6 +12,8 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 
 import buildcraft.api.core.BCLog;
+import buildcraft.api.core.BuildCraftAPI;
+import buildcraft.compat.*;
 import buildcraft.compat.forestry.pipes.network.PacketGenomeFilterChange;
 import buildcraft.compat.forestry.pipes.network.PacketRequestFilterSet;
 import buildcraft.compat.forestry.pipes.network.PacketTypeFilterChange;
@@ -31,9 +22,25 @@ import buildcraft.core.lib.network.ChannelHandler;
 import buildcraft.gui.CompatGuiHandler;
 import buildcraft.network.PacketHandlerCompat;
 import buildcraft.texture.TextureManager;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLMissingMappingsEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
-@Mod(name = "BuildCraft Compat", version = "GRADLETOKEN_VERSION", useMetadata = false, modid = "BuildCraft|Compat", acceptedMinecraftVersions = "[1.7.10,1.8)", dependencies = "required-after:Forge@[10.13.0.1179,);required-after:BuildCraft|Core;after:Forestry;after:BuildCraft|Transport;after:BuildCraft|Builders;after:ThermalExpansion")
+@Mod(
+        name = "BuildCraft Compat",
+        version = "GRADLETOKEN_VERSION",
+        useMetadata = false,
+        modid = "BuildCraft|Compat",
+        acceptedMinecraftVersions = "[1.7.10,1.8)",
+        dependencies = "required-after:Forge@[10.13.0.1179,);required-after:BuildCraft|Core;after:Forestry;after:BuildCraft|Transport;after:BuildCraft|Builders;after:ThermalExpansion")
 public class BuildCraftCompat extends BuildCraftMod {
+
     @Mod.Instance("BuildCraft|Compat")
     public static BuildCraftCompat instance;
 
@@ -47,7 +54,7 @@ public class BuildCraftCompat extends BuildCraftMod {
     }
 
     private void offerModule(final CompatModuleBase module) {
-		Property prop = BuildCraftCompat.config.get("modules", module.name(), true);
+        Property prop = BuildCraftCompat.config.get("modules", module.name(), true);
         if (module.canLoad() && prop.getBoolean(true) == true) {
             BuildCraftCompat.modules.add(module);
             BuildCraftCompat.moduleNames.add(module.name());
@@ -70,7 +77,9 @@ public class BuildCraftCompat extends BuildCraftMod {
 
     @Mod.EventHandler
     public void preInit(final FMLPreInitializationEvent evt) {
-        (BuildCraftCompat.config = new Configuration(new File(new File(evt.getSuggestedConfigurationFile().getParentFile(), "buildcraft"), "compat.cfg"))).load();
+        (BuildCraftCompat.config = new Configuration(
+                new File(new File(evt.getSuggestedConfigurationFile().getParentFile(), "buildcraft"), "compat.cfg")))
+                        .load();
         this.offerModule(new CompatModuleWitchery());
         this.offerModule(new CompatModuleAMT());
         this.offerModule(new CompatModuleAquaTweaks());
@@ -94,8 +103,8 @@ public class BuildCraftCompat extends BuildCraftMod {
         this.offerModule(new CompatModuleFactorization());
         this.offerModule(new CompatModuleImmersiveEngineering());
         this.offerModule(new CompatModuleEnderStorage());
-		this.offerModule(new CompatModuleThermalExpansion());
-		this.offerModule(new CompatModuleRemainInMotion());
+        this.offerModule(new CompatModuleThermalExpansion());
+        this.offerModule(new CompatModuleRemainInMotion());
         this.offerModule(new CompatModuleMagicCrops());
         this.offerModule(new CompatModuleNatura());
         this.offerModule(new CompatModuleForbiddenMagic());
@@ -105,7 +114,7 @@ public class BuildCraftCompat extends BuildCraftMod {
             m.preInit();
         }
     }
-    
+
     @Mod.EventHandler
     public void init(final FMLInitializationEvent evt) {
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new CompatGuiHandler());
@@ -117,8 +126,8 @@ public class BuildCraftCompat extends BuildCraftMod {
         compatChannelHandler.registerPacketType(PacketTypeFilterChange.class);
         compatChannelHandler.registerPacketType(PacketRequestFilterSet.class);
 
-        channels = NetworkRegistry.INSTANCE.newChannel
-                (DefaultProps.NET_CHANNEL_NAME + "-COMPAT", compatChannelHandler, new PacketHandlerCompat());
+        channels = NetworkRegistry.INSTANCE
+                .newChannel(DefaultProps.NET_CHANNEL_NAME + "-COMPAT", compatChannelHandler, new PacketHandlerCompat());
 
         for (final CompatModuleBase m : BuildCraftCompat.modules) {
             BCLog.logger.info("Loading compat module " + m.name());
@@ -127,7 +136,7 @@ public class BuildCraftCompat extends BuildCraftMod {
 
         BuildCraftCompat.config.save();
     }
-    
+
     @Mod.EventHandler
     public void postInit(final FMLPostInitializationEvent evt) {
         for (final CompatModuleBase m : BuildCraftCompat.modules) {
@@ -151,7 +160,7 @@ public class BuildCraftCompat extends BuildCraftMod {
     public static boolean hasModule(final String module) {
         return BuildCraftCompat.moduleNames.contains(module);
     }
-    
+
     static {
         modules = new HashSet<CompatModuleBase>();
         moduleNames = new HashSet<String>();

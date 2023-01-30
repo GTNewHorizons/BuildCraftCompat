@@ -5,6 +5,7 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Optional;
 
 public class CompatModuleEnderStorage extends CompatModuleBase {
+
     @Override
     public String name() {
         return "EnderStorage";

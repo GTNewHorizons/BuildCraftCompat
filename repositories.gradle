@@ -16,7 +16,8 @@ repositories {
     maven {
         url "https://cursemaven.com"
     }
-    maven {
-        url = "https://jitpack.io"
+    ivy {
+        name 'asie dependency mirror'
+        artifactPattern "http://asie.pl/javadeps/[module]-[revision](-[classifier]).[ext]"
     }
 }

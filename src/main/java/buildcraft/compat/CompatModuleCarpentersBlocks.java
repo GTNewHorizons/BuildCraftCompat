@@ -1,7 +1,5 @@
 package buildcraft.compat;
 
-import cpw.mods.fml.common.Loader;
-
 import buildcraft.compat.carpentersblocks.SchematicCBBlock;
 import buildcraft.compat.carpentersblocks.SchematicCBCollapsible;
 import buildcraft.compat.carpentersblocks.SchematicCBGate;
@@ -10,19 +8,20 @@ import buildcraft.compat.carpentersblocks.SchematicCBRotatedTwo;
 import buildcraft.compat.carpentersblocks.SchematicCBSafe;
 import buildcraft.compat.carpentersblocks.SchematicCBTorch;
 import buildcraft.compat.lib.SchematicTileDropsOnly;
+import cpw.mods.fml.common.Loader;
 
-public class CompatModuleCarpentersBlocks extends CompatModuleBase
-{
+public class CompatModuleCarpentersBlocks extends CompatModuleBase {
+
     @Override
     public String name() {
         return "CarpentersBlocks";
     }
-    
+
     @Override
     public boolean canLoad() {
         return super.canLoad() && Loader.isModLoaded("BuildCraft|Builders");
     }
-    
+
     @Override
     public void init() {
         CompatUtils.registerSchematic("CarpentersBlocks:blockCarpentersBarrier", SchematicTileDropsOnly.class);

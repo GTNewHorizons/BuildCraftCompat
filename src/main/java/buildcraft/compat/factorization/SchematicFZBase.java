@@ -18,177 +18,184 @@ import factorization.servo.TileEntityServoRail;
 import factorization.sockets.TileEntitySocketBase;
 
 public class SchematicFZBase extends SchematicTile {
-	protected static final int[] shiftMatrix = {0, 1, 5, 4, 2, 3, 6, 7};
 
-	@Override
-	public void rotateLeft(IBuilderContext context) {
-		if (tileNBT != null) {
-			if (tileNBT.hasKey("facing")) {
-				tileNBT.setByte("facing", (byte) shiftMatrix[tileNBT.getByte("facing") & 7]);
-			} else if (tileNBT.hasKey("side")) {
-				tileNBT.setByte("side", (byte) shiftMatrix[tileNBT.getByte("side") & 7]);
-			} else if (tileNBT.hasKey("fc")) {
-				tileNBT.setByte("fc", (byte) shiftMatrix[tileNBT.getByte("fc") & 7]);
-			} else if (tileNBT.hasKey("dir")) {
-				tileNBT.setByte("dir", (byte) shiftMatrix[tileNBT.getByte("dir") & 7]);
-			}
-		}
-	}
+    protected static final int[] shiftMatrix = { 0, 1, 5, 4, 2, 3, 6, 7 };
 
-	@Override
-	public void initializeFromObjectAt(IBuilderContext context, int x, int y, int z) {
-		super.initializeFromObjectAt(context, x, y, z);
-		if (tileNBT != null) {
-			tileNBT.removeTag("draw_active_byte");
+    @Override
+    public void rotateLeft(IBuilderContext context) {
+        if (tileNBT != null) {
+            if (tileNBT.hasKey("facing")) {
+                tileNBT.setByte("facing", (byte) shiftMatrix[tileNBT.getByte("facing") & 7]);
+            } else if (tileNBT.hasKey("side")) {
+                tileNBT.setByte("side", (byte) shiftMatrix[tileNBT.getByte("side") & 7]);
+            } else if (tileNBT.hasKey("fc")) {
+                tileNBT.setByte("fc", (byte) shiftMatrix[tileNBT.getByte("fc") & 7]);
+            } else if (tileNBT.hasKey("dir")) {
+                tileNBT.setByte("dir", (byte) shiftMatrix[tileNBT.getByte("dir") & 7]);
+            }
+        }
+    }
 
-			// Furnacelikes
-			tileNBT.removeTag("burnTime");
-			tileNBT.removeTag("cookTime");
+    @Override
+    public void initializeFromObjectAt(IBuilderContext context, int x, int y, int z) {
+        super.initializeFromObjectAt(context, x, y, z);
+        if (tileNBT != null) {
+            tileNBT.removeTag("draw_active_byte");
 
-			// Energy
-			tileNBT.removeTag("store");
-			tileNBT.removeTag("storage");
-			tileNBT.removeTag("charge");
-			tileNBT.removeTag("heat");
-			tileNBT.removeTag("progress");
-			tileNBT.removeTag("prog");
+            // Furnacelikes
+            tileNBT.removeTag("burnTime");
+            tileNBT.removeTag("cookTime");
 
-			// Caliometric
-			tileNBT.removeTag("digest");
-			tileNBT.removeTag("food");
-			tileNBT.removeTag("stomache");
+            // Energy
+            tileNBT.removeTag("store");
+            tileNBT.removeTag("storage");
+            tileNBT.removeTag("charge");
+            tileNBT.removeTag("heat");
+            tileNBT.removeTag("progress");
+            tileNBT.removeTag("prog");
 
-			// Boiler/Turbine
-			tileNBT.removeTag("steam");
-			tileNBT.removeTag("water");
+            // Caliometric
+            tileNBT.removeTag("digest");
+            tileNBT.removeTag("food");
+            tileNBT.removeTag("stomache");
 
-			// Mirror
-			tileNBT.removeTag("targetx");
-			tileNBT.removeTag("targety");
-			tileNBT.removeTag("targetz");
+            // Boiler/Turbine
+            tileNBT.removeTag("steam");
+            tileNBT.removeTag("water");
 
-			// Compression Crafter
-			tileNBT.removeTag("rs");
-			tileNBT.removeTag("root");
-			tileNBT.removeTag("prog");
+            // Mirror
+            tileNBT.removeTag("targetx");
+            tileNBT.removeTag("targety");
+            tileNBT.removeTag("targetz");
 
-			// Sockets
-			if (meta == 3) {
-				tileNBT.removeTag("spd");
-				tileNBT.removeTag("prg");
-				tileNBT.removeTag("buf");
-				tileNBT.removeTag("hsh");
-				tileNBT.removeTag("chargecharge");
+            // Compression Crafter
+            tileNBT.removeTag("rs");
+            tileNBT.removeTag("root");
+            tileNBT.removeTag("prog");
 
-				tileNBT.removeTag("pow");
+            // Sockets
+            if (meta == 3) {
+                tileNBT.removeTag("spd");
+                tileNBT.removeTag("prg");
+                tileNBT.removeTag("buf");
+                tileNBT.removeTag("hsh");
+                tileNBT.removeTag("chargecharge");
 
-				tileNBT.removeTag("open");
+                tileNBT.removeTag("pow");
 
-				tileNBT.removeTag("wait");
+                tileNBT.removeTag("open");
 
-				tileNBT.removeTag("fanw");
-				tileNBT.removeTag("dropDelay");
-				tileNBT.removeTag("buff");
-				tileNBT.removeTag("auxBuff");
-				tileNBT.removeTag("murderBuff");
-				tileNBT.removeTag("drainTank");
-				tileNBT.removeTag("floodTank");
-			}
+                tileNBT.removeTag("wait");
 
-			if ("factory_battery".equals(tileNBT.getString("id"))) {
-				tileNBT.setInteger("storage", 6400);
-			}
-		}
-	}
+                tileNBT.removeTag("fanw");
+                tileNBT.removeTag("dropDelay");
+                tileNBT.removeTag("buff");
+                tileNBT.removeTag("auxBuff");
+                tileNBT.removeTag("murderBuff");
+                tileNBT.removeTag("drainTank");
+                tileNBT.removeTag("floodTank");
+            }
 
-	@Override
-	public boolean isAlreadyBuilt(IBuilderContext context, int x, int y, int z) {
-		if (super.isAlreadyBuilt(context, x, y, z)) {
-			NBTTagCompound targetNBT = CompatUtils.getTileNBT(context.world(), x, y, z);
-			return targetNBT.getByte("facing") == tileNBT.getByte("facing")
-					&& targetNBT.getByte("side") == tileNBT.getByte("side")
-					&& targetNBT.getByte("fc") == tileNBT.getByte("fc")
-					&& targetNBT.getByte("dir") == tileNBT.getByte("dir");
-		} else {
-			return false;
-		}
-	}
+            if ("factory_battery".equals(tileNBT.getString("id"))) {
+                tileNBT.setInteger("storage", 6400);
+            }
+        }
+    }
 
-	@Override
-	public void getRequirementsForPlacement(IBuilderContext context, LinkedList<ItemStack> requirements) {
-		if (!doNotBuild()) {
-			super.getRequirementsForPlacement(context, requirements);
-		}
-	}
+    @Override
+    public boolean isAlreadyBuilt(IBuilderContext context, int x, int y, int z) {
+        if (super.isAlreadyBuilt(context, x, y, z)) {
+            NBTTagCompound targetNBT = CompatUtils.getTileNBT(context.world(), x, y, z);
+            return targetNBT.getByte("facing") == tileNBT.getByte("facing")
+                    && targetNBT.getByte("side") == tileNBT.getByte("side")
+                    && targetNBT.getByte("fc") == tileNBT.getByte("fc")
+                    && targetNBT.getByte("dir") == tileNBT.getByte("dir");
+        } else {
+            return false;
+        }
+    }
 
-	@Override
-	public void storeRequirements(IBuilderContext context, int x, int y, int z) {
-		if (!doNotBuild()) {
-			// Oh, FZ, I love thee so much...
-			if (tileNBT != null) {
-				if ("factory_battery".equals(tileNBT.getString("id"))) {
-					storedRequirements = new ItemStack[1];
-					storedRequirements[0] = new ItemStack(Item.getItemFromBlock(Block.getBlockFromName("factorization:charge_battery")), 1, 2);
-					storedRequirements[0].setTagCompound(new NBTTagCompound());
-					return;
-				} else if ("factory_leyjar".equals(tileNBT.getString("id"))) {
-					storedRequirements = new ItemStack[1];
-					storedRequirements[0] = new ItemStack(Item.getItemFromBlock(Block.getBlockFromName("factorization:FzBlock")), 1, 26);
-					return;
-				}
-			}
-			if (meta == 3) {
-				TileEntity tile = context.world().getTileEntity(x, y, z);
-				if (tile instanceof TileEntitySocketBase) {
-					ArrayList<ItemStack> reqs = new ArrayList<ItemStack>();
-					TileEntitySocketBase socket;
-					FactoryType type = ((TileEntitySocketBase) tile).getFactoryType();
+    @Override
+    public void getRequirementsForPlacement(IBuilderContext context, LinkedList<ItemStack> requirements) {
+        if (!doNotBuild()) {
+            super.getRequirementsForPlacement(context, requirements);
+        }
+    }
 
-					while (type != null) {
-						socket = (TileEntitySocketBase) type.getRepresentative();
-						if (socket != null && socket.getCreatingItem() != null) {
-							reqs.add(socket.getCreatingItem());
-						}
-						type = socket.getParentFactoryType();
-					}
+    @Override
+    public void storeRequirements(IBuilderContext context, int x, int y, int z) {
+        if (!doNotBuild()) {
+            // Oh, FZ, I love thee so much...
+            if (tileNBT != null) {
+                if ("factory_battery".equals(tileNBT.getString("id"))) {
+                    storedRequirements = new ItemStack[1];
+                    storedRequirements[0] = new ItemStack(
+                            Item.getItemFromBlock(Block.getBlockFromName("factorization:charge_battery")),
+                            1,
+                            2);
+                    storedRequirements[0].setTagCompound(new NBTTagCompound());
+                    return;
+                } else if ("factory_leyjar".equals(tileNBT.getString("id"))) {
+                    storedRequirements = new ItemStack[1];
+                    storedRequirements[0] = new ItemStack(
+                            Item.getItemFromBlock(Block.getBlockFromName("factorization:FzBlock")),
+                            1,
+                            26);
+                    return;
+                }
+            }
+            if (meta == 3) {
+                TileEntity tile = context.world().getTileEntity(x, y, z);
+                if (tile instanceof TileEntitySocketBase) {
+                    ArrayList<ItemStack> reqs = new ArrayList<ItemStack>();
+                    TileEntitySocketBase socket;
+                    FactoryType type = ((TileEntitySocketBase) tile).getFactoryType();
 
-					reqs.add(FactoryType.SOCKET_EMPTY.itemStack());
+                    while (type != null) {
+                        socket = (TileEntitySocketBase) type.getRepresentative();
+                        if (socket != null && socket.getCreatingItem() != null) {
+                            reqs.add(socket.getCreatingItem());
+                        }
+                        type = socket.getParentFactoryType();
+                    }
 
-					storedRequirements = reqs.toArray(new ItemStack[reqs.size()]);
-					return;
-				}
-			}
-			if (meta == 9) {
-				TileEntity tile = context.world().getTileEntity(x, y, z);
+                    reqs.add(FactoryType.SOCKET_EMPTY.itemStack());
 
-				if (tile instanceof TileEntityServoRail) {
-					ArrayList<ItemStack> reqs = new ArrayList<ItemStack>();
-					TileEntityServoRail rail = (TileEntityServoRail) tile;
-					reqs.add(rail.getDroppedBlock());
+                    storedRequirements = reqs.toArray(new ItemStack[reqs.size()]);
+                    return;
+                }
+            }
+            if (meta == 9) {
+                TileEntity tile = context.world().getTileEntity(x, y, z);
 
-					if (rail.getDecoration() != null && !rail.getDecoration().isFreeToPlace()) {
-						reqs.add(rail.getDecoration().toItem());
-					}
+                if (tile instanceof TileEntityServoRail) {
+                    ArrayList<ItemStack> reqs = new ArrayList<ItemStack>();
+                    TileEntityServoRail rail = (TileEntityServoRail) tile;
+                    reqs.add(rail.getDroppedBlock());
 
-					storedRequirements = reqs.toArray(new ItemStack[reqs.size()]);
-					return;
-				}
-			}
-			super.storeRequirements(context, x, y, z);
-		}
-	}
+                    if (rail.getDecoration() != null && !rail.getDecoration().isFreeToPlace()) {
+                        reqs.add(rail.getDecoration().toItem());
+                    }
 
-	@Override
-	public boolean doNotBuild() {
-		if (tileNBT != null) {
-			String id = tileNBT.getString("id");
-			if ("factory_hinge".equals(id)) {
-				return true;
-			}
-			if ("factory_rail".equals(id) && !CompatModuleFactorization.ENABLE_SERVO_RAILS) {
-				return true;
-			}
-		}
-		return false;
-	}
+                    storedRequirements = reqs.toArray(new ItemStack[reqs.size()]);
+                    return;
+                }
+            }
+            super.storeRequirements(context, x, y, z);
+        }
+    }
+
+    @Override
+    public boolean doNotBuild() {
+        if (tileNBT != null) {
+            String id = tileNBT.getString("id");
+            if ("factory_hinge".equals(id)) {
+                return true;
+            }
+            if ("factory_rail".equals(id) && !CompatModuleFactorization.ENABLE_SERVO_RAILS) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -2,6 +2,10 @@ package buildcraft.compat.waila;
 
 import java.util.List;
 
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
+import mcp.mobius.waila.api.IWailaDataProvider;
+
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -11,44 +15,45 @@ import net.minecraft.world.World;
 import buildcraft.api.transport.IPipeTile;
 import buildcraft.transport.pipes.PipePowerIron;
 
-import mcp.mobius.waila.api.IWailaConfigHandler;
-import mcp.mobius.waila.api.IWailaDataAccessor;
-import mcp.mobius.waila.api.IWailaDataProvider;
-
 public class PowerModeTransportDataProvider implements IWailaDataProvider {
-	@Override
-	public ItemStack getWailaStack(IWailaDataAccessor accessor, IWailaConfigHandler config) {
-		return null;
-	}
 
-	@Override
-	public List<String> getWailaHead(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
-		return currenttip;
-	}
+    @Override
+    public ItemStack getWailaStack(IWailaDataAccessor accessor, IWailaConfigHandler config) {
+        return null;
+    }
 
-	@Override
-	public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
-		TileEntity te = accessor.getTileEntity();
+    @Override
+    public List<String> getWailaHead(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor,
+            IWailaConfigHandler config) {
+        return currenttip;
+    }
 
-		if (te instanceof IPipeTile) {
-			IPipeTile tile = (IPipeTile) te;
-			if (tile.getPipe() instanceof PipePowerIron) {
-				PipePowerIron powerIron = (PipePowerIron) tile.getPipe();
+    @Override
+    public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor,
+            IWailaConfigHandler config) {
+        TileEntity te = accessor.getTileEntity();
 
-				currenttip.add(powerIron.getMode().maxPower + " RF/t");
-			}
-		}
+        if (te instanceof IPipeTile) {
+            IPipeTile tile = (IPipeTile) te;
+            if (tile.getPipe() instanceof PipePowerIron) {
+                PipePowerIron powerIron = (PipePowerIron) tile.getPipe();
 
-		return currenttip;
-	}
+                currenttip.add(powerIron.getMode().maxPower + " RF/t");
+            }
+        }
 
-	@Override
-	public List<String> getWailaTail(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
-		return currenttip;
-	}
+        return currenttip;
+    }
 
-	@Override
-	public NBTTagCompound getNBTData(EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, int x, int y, int z) {
-		return tag;
-	}
+    @Override
+    public List<String> getWailaTail(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor,
+            IWailaConfigHandler config) {
+        return currenttip;
+    }
+
+    @Override
+    public NBTTagCompound getNBTData(EntityPlayerMP player, TileEntity te, NBTTagCompound tag, World world, int x,
+            int y, int z) {
+        return tag;
+    }
 }
