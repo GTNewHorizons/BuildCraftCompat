@@ -14,13 +14,13 @@ dependencies {
     compileOnly("com.github.GTNewHorizons:ForgeMultipart:1.2.7:dev") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:NotEnoughItems:2.2.3-GTNH:dev") {
+    compileOnly("com.github.GTNewHorizons:NotEnoughItems:2.3.43-GTNH:dev") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:ForestryMC:4.4.4:api") {
+    compileOnly("com.github.GTNewHorizons:ForestryMC:4.6.6:api") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:EnderIO:2.3.1.27:dev") {
+    compileOnly("com.github.GTNewHorizons:EnderIO:2.4.9:dev") {
         transitive = false
     }
     compileOnly("com.github.GTNewHorizons:CraftTweaker:3.2.5:dev") {
@@ -32,10 +32,10 @@ dependencies {
     compileOnly("com.github.GTNewHorizons:QmunityLib:0.1.115:dev") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:Applied-Energistics-2-Unofficial:rv3-beta-70-GTNH:dev") {
+    compileOnly("com.github.GTNewHorizons:Applied-Energistics-2-Unofficial:rv3-beta-195-GTNH:dev") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:OpenComputers:1.7.5.20-GTNH:dev") {
+    compileOnly("com.github.GTNewHorizons:OpenComputers:1.9.1-GTNH:dev") {
         transitive = false
     }
     compileOnly("curse.maven:minefactory-reloaded-66672:2366150") {
