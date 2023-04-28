@@ -273,9 +273,9 @@ public class GuiPropolisPipe extends GuiBuildCraft {
                         }
 
                         IAlleleBeeSpecies next = (IAlleleBeeSpecies) entry2.getValue();
-//                        if (next.isSecret() && !tracker.isDiscovered(next)) {
-//                            continue;
-//                        }
+                        // if (next.isSecret() && !tracker.isDiscovered(next)) {
+                        // continue;
+                        // }
 
                         change = next;
                         break;
