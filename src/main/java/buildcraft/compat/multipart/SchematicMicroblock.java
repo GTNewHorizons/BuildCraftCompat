@@ -2,7 +2,8 @@ package buildcraft.compat.multipart;
 
 import net.minecraft.nbt.NBTTagCompound;
 
-import codechicken.microblock.*;
+import codechicken.microblock.MicroMaterialRegistry;
+import codechicken.microblock.Microblock;
 
 public class SchematicMicroblock extends SchematicSimplePart<Microblock> {
 

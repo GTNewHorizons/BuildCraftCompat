@@ -1,9 +1,9 @@
 // Add your dependencies here
 
 dependencies {
-    compile("com.github.GTNewHorizons:BuildCraft:7.1.36:dev")
-    compile("com.github.GTNewHorizons:CodeChickenLib:1.1.8:dev")
-    compile("curse.maven:cofh-lib-220333:2388748")
+    api("com.github.GTNewHorizons:BuildCraft:7.1.36:dev")
+    api("com.github.GTNewHorizons:CodeChickenLib:1.1.8:dev")
+    implementation("curse.maven:cofh-lib-220333:2388748")
 
     compileOnly("com.github.GTNewHorizons:ProjectRed:4.7.12-GTNH:dev") {
         transitive = false

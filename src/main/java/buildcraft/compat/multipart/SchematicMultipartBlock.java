@@ -8,7 +8,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 
-import buildcraft.api.blueprints.*;
+import buildcraft.api.blueprints.BuildingPermission;
+import buildcraft.api.blueprints.IBuilderContext;
+import buildcraft.api.blueprints.MappingNotFoundException;
+import buildcraft.api.blueprints.MappingRegistry;
+import buildcraft.api.blueprints.SchematicBlock;
 import codechicken.lib.vec.BlockCoord;
 import codechicken.multipart.TMultiPart;
 import codechicken.multipart.handler.MultipartProxy;

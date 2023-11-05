@@ -1,6 +1,6 @@
 package buildcraft.compat;
 
-import cpw.mods.fml.common.*;
+import cpw.mods.fml.common.Loader;
 
 public abstract class CompatModuleBase {
 
