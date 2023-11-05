@@ -3,6 +3,7 @@ package buildcraft.compat.nei;
 import java.util.ArrayList;
 import java.util.List;
 
+import buildcraft.compat.forestry.pipes.gui.GuiPropolisPipe;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.item.ItemStack;
 
@@ -31,7 +32,11 @@ public class NEIGuiHandlerBC implements INEIGuiHandler {
 
     @Override
     public boolean handleDragNDrop(GuiContainer gui, int mousex, int mousey, ItemStack draggedStack, int button) {
-        return false;
+        if (gui instanceof GuiPropolisPipe)
+            return ((GuiPropolisPipe) gui).handleDragNDrop(mousex, mousey, draggedStack, button);
+        else {
+            return false;
+        }
     }
 
     @Override

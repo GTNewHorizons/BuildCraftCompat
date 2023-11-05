@@ -4,8 +4,12 @@ import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map.Entry;
 
+import codechicken.nei.ItemPanels;
+import forestry.api.apiculture.BeeManager;
+import forestry.api.apiculture.IBee;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
@@ -85,6 +89,17 @@ public class GuiPropolisPipe extends GuiBuildCraft {
         super.drawGuiContainerForegroundLayer(mouseX, mouseY);
         String title = StatCollector.translateToLocal("item.buildcraftPipe.pipeitemspropolis.name");
         fontRendererObj.drawString(title, getCenteredOffset(title), 6, 0x303030);
+    }
+
+    public boolean handleDragNDrop(int mousex, int mousey, ItemStack draggedStack, int button) {
+        int relativeX = mousex - guiLeft;
+        int relativeY = mousey - guiTop;
+        return  getContainer().getWidgets().stream()
+                .filter(w -> w.isMouseOver(relativeX, relativeY))
+                .filter(w -> w instanceof SpeciesFilterSlot)
+                .findFirst()
+                .filter(value -> ((SpeciesFilterSlot) value).handleDragNDrop(draggedStack, button))
+                .isPresent();
     }
 
     class TypeFilterSlot extends Widget {
@@ -238,6 +253,11 @@ public class GuiPropolisPipe extends GuiBuildCraft {
 
         @Override
         public boolean handleMouseClick(int mouseX, int mouseY, int mouseButton) {
+            ItemStack neiDraggedStack = ItemPanels.itemPanel.draggedStack;
+            if (neiDraggedStack != null) {
+                // drag is handled by #handleDragNDrop
+                return false;
+            }
             IAlleleSpecies change = null;
             if (mouseButton == 1) {
                 change = null;
@@ -254,6 +274,7 @@ public class GuiPropolisPipe extends GuiBuildCraft {
 
             } else {
 
+                boolean isShiftKeyDown = Keyboard.isKeyDown(Keyboard.KEY_LSHIFT);
                 Iterator<Entry<String, IAllele>> it = AlleleManager.alleleRegistry.getRegisteredAlleles().entrySet()
                         .iterator();
                 IAlleleBeeSpecies beforeChosen = null;
@@ -269,7 +290,7 @@ public class GuiPropolisPipe extends GuiBuildCraft {
                         continue;
                     }
                     // found previously chosen species
-                    if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
+                    if (isShiftKeyDown) {
                         change = beforeChosen;
                     } else {
                         while (it.hasNext()) {
@@ -293,6 +314,16 @@ public class GuiPropolisPipe extends GuiBuildCraft {
             }
             pipeLogic.setSpeciesFilter(orientation, pattern, allele, change);
             return true;
+        }
+
+        public boolean handleDragNDrop(ItemStack draggedStack, int button) {
+            IBee member = BeeManager.beeRoot.getMember(draggedStack);
+            if (member != null) {
+                IAlleleBeeSpecies speciesDragged = member.getGenome().getPrimary();
+                pipeLogic.setSpeciesFilter(orientation, pattern, allele, speciesDragged);
+                return true;
+            }
+            return false;
         }
     }
 }
