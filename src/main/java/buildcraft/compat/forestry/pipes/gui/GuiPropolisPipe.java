@@ -11,6 +11,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
 import buildcraft.compat.CompatModuleForestry;
@@ -255,6 +256,7 @@ public class GuiPropolisPipe extends GuiBuildCraft {
 
                 Iterator<Entry<String, IAllele>> it = AlleleManager.alleleRegistry.getRegisteredAlleles().entrySet()
                         .iterator();
+                IAlleleBeeSpecies beforeChosen = null;
                 while (it.hasNext()) {
                     Entry<String, IAllele> entry = it.next();
                     if (!(entry.getValue() instanceof IAlleleBeeSpecies)) {
@@ -263,22 +265,27 @@ public class GuiPropolisPipe extends GuiBuildCraft {
 
                     IAlleleBeeSpecies species = (IAlleleBeeSpecies) entry.getValue();
                     if (!species.getUID().equals(getSpecies().getUID())) {
+                        beforeChosen = species;
                         continue;
                     }
+                    // found previously chosen species
+                    if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
+                        change = beforeChosen;
+                    } else {
+                        while (it.hasNext()) {
+                            Entry<String, IAllele> entry2 = it.next();
+                            if (!(entry2.getValue() instanceof IAlleleBeeSpecies)) {
+                                continue;
+                            }
 
-                    while (it.hasNext()) {
-                        Entry<String, IAllele> entry2 = it.next();
-                        if (!(entry2.getValue() instanceof IAlleleBeeSpecies)) {
-                            continue;
+                            IAlleleBeeSpecies next = (IAlleleBeeSpecies) entry2.getValue();
+//                            if (next.isSecret() && !(tracker.isDiscovered(next))) {
+//                                continue;
+//                            }
+
+                            change = next;
+                            break;
                         }
-
-                        IAlleleBeeSpecies next = (IAlleleBeeSpecies) entry2.getValue();
-                        // if (next.isSecret() && !tracker.isDiscovered(next)) {
-                        // continue;
-                        // }
-
-                        change = next;
-                        break;
                     }
 
                     break;
