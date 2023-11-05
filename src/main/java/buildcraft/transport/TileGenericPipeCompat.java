@@ -1,15 +1,5 @@
 package buildcraft.transport;
 
-import mods.immibis.redlogic.api.wiring.IBareRedstoneWire;
-import mods.immibis.redlogic.api.wiring.IBundledEmitter;
-import mods.immibis.redlogic.api.wiring.IBundledUpdatable;
-import mods.immibis.redlogic.api.wiring.IBundledWire;
-import mods.immibis.redlogic.api.wiring.IConnectable;
-import mods.immibis.redlogic.api.wiring.IRedstoneEmitter;
-import mods.immibis.redlogic.api.wiring.IWire;
-import mrtjp.projectred.api.IBundledTile;
-import mrtjp.projectred.api.ProjectRedAPI;
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -21,6 +11,15 @@ import cofh.api.inventory.IInventoryConnection;
 import cofh.api.transport.IItemDuct;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Optional;
+import mods.immibis.redlogic.api.wiring.IBareRedstoneWire;
+import mods.immibis.redlogic.api.wiring.IBundledEmitter;
+import mods.immibis.redlogic.api.wiring.IBundledUpdatable;
+import mods.immibis.redlogic.api.wiring.IBundledWire;
+import mods.immibis.redlogic.api.wiring.IConnectable;
+import mods.immibis.redlogic.api.wiring.IRedstoneEmitter;
+import mods.immibis.redlogic.api.wiring.IWire;
+import mrtjp.projectred.api.IBundledTile;
+import mrtjp.projectred.api.ProjectRedAPI;
 
 @Optional.InterfaceList({
         @Optional.Interface(iface = "mods.immibis.redlogic.api.wiring.IBundledEmitter", modid = "RedLogic"),

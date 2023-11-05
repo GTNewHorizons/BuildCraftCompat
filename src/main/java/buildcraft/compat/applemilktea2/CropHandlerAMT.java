@@ -2,8 +2,6 @@ package buildcraft.compat.applemilktea2;
 
 import java.util.List;
 
-import mods.defeatedcrow.api.plants.IRightClickHarvestable;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -13,6 +11,7 @@ import net.minecraft.world.World;
 
 import buildcraft.api.crops.ICropHandler;
 import buildcraft.core.lib.inventory.SimpleInventory;
+import mods.defeatedcrow.api.plants.IRightClickHarvestable;
 
 public class CropHandlerAMT implements ICropHandler {
 

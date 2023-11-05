@@ -2,10 +2,10 @@ package buildcraft.builders;
 
 import net.minecraftforge.common.util.ForgeDirection;
 
-import cofh.api.inventory.IInventoryConnection;
-
 import com.bluepowermod.api.tube.ITubeConnection;
 import com.bluepowermod.part.tube.TubeStack;
+
+import cofh.api.inventory.IInventoryConnection;
 import cpw.mods.fml.common.Optional;
 
 @Optional.InterfaceList({

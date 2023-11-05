@@ -2,10 +2,6 @@ package buildcraft.compat.waila;
 
 import java.util.List;
 
-import mcp.mobius.waila.api.IWailaConfigHandler;
-import mcp.mobius.waila.api.IWailaDataAccessor;
-import mcp.mobius.waila.api.IWailaDataProvider;
-
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -17,6 +13,9 @@ import net.minecraft.world.World;
 import buildcraft.api.blueprints.BuildingPermission;
 import buildcraft.api.blueprints.SchematicBlock;
 import buildcraft.core.blueprints.SchematicRegistry;
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
+import mcp.mobius.waila.api.IWailaDataProvider;
 
 public class BuilderDebugDataProvider implements IWailaDataProvider {
 

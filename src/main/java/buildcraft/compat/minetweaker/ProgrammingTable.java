@@ -8,20 +8,19 @@ package buildcraft.compat.minetweaker;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.item.ItemStack;
+
+import buildcraft.api.recipes.BuildcraftRecipeRegistry;
+import buildcraft.api.recipes.IProgrammingRecipe;
+import buildcraft.core.lib.inventory.StackHelper;
 import minetweaker.IUndoableAction;
 import minetweaker.MineTweakerAPI;
 import minetweaker.annotations.ModOnly;
 import minetweaker.api.item.IItemStack;
 import minetweaker.api.minecraft.MineTweakerMC;
-
-import net.minecraft.item.ItemStack;
-
 import stanhebben.zenscript.annotations.Optional;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
-import buildcraft.api.recipes.BuildcraftRecipeRegistry;
-import buildcraft.api.recipes.IProgrammingRecipe;
-import buildcraft.core.lib.inventory.StackHelper;
 
 @ZenClass("mods.buildcraft.ProgrammingTable")
 @ModOnly("BuildCraft|Silicon")

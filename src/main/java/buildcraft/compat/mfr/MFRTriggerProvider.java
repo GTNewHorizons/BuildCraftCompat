@@ -7,12 +7,12 @@ import java.util.List;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 
-import powercrystals.minefactoryreloaded.tile.base.TileEntityFactoryInventory;
-import powercrystals.minefactoryreloaded.tile.transport.TileEntityConveyor;
 import buildcraft.api.statements.IStatementContainer;
 import buildcraft.api.statements.ITriggerExternal;
 import buildcraft.api.statements.ITriggerInternal;
 import buildcraft.api.statements.ITriggerProvider;
+import powercrystals.minefactoryreloaded.tile.base.TileEntityFactoryInventory;
+import powercrystals.minefactoryreloaded.tile.transport.TileEntityConveyor;
 
 public class MFRTriggerProvider implements ITriggerProvider {
 

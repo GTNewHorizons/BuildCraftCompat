@@ -2,11 +2,11 @@ package buildcraft.compat.railcraft;
 
 import java.util.Set;
 
+import com.google.common.collect.Sets;
+
 import buildcraft.api.blueprints.IBuilderContext;
 import buildcraft.api.core.BlockIndex;
 import buildcraft.core.builders.schematics.SchematicRotateMeta;
-
-import com.google.common.collect.Sets;
 
 public class SchematicRCTrackElevator extends SchematicRotateMeta {
 

@@ -3,13 +3,13 @@ package buildcraft.compat.bluepower;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
-import buildcraft.transport.TileGenericPipeCompat;
-
 import com.bluepowermod.api.BPApi;
 import com.bluepowermod.api.connect.ConnectionType;
 import com.bluepowermod.api.connect.IConnectionCache;
 import com.bluepowermod.api.misc.MinecraftColor;
 import com.bluepowermod.api.wire.redstone.IBundledDevice;
+
+import buildcraft.transport.TileGenericPipeCompat;
 
 public class BundledDevicePipe implements IBundledDevice {
 

@@ -8,6 +8,15 @@ package buildcraft.compat.minetweaker;
 import java.util.HashSet;
 import java.util.Set;
 
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidStack;
+
+import buildcraft.api.core.StackKey;
+import buildcraft.api.fuels.BuildcraftFuelRegistry;
+import buildcraft.api.fuels.ICoolant;
+import buildcraft.api.fuels.IFuel;
+import buildcraft.api.fuels.ISolidCoolant;
 import minetweaker.IUndoableAction;
 import minetweaker.MineTweakerAPI;
 import minetweaker.annotations.ModOnly;
@@ -15,18 +24,8 @@ import minetweaker.api.item.IIngredient;
 import minetweaker.api.item.IItemStack;
 import minetweaker.api.liquid.ILiquidStack;
 import minetweaker.api.minecraft.MineTweakerMC;
-
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidStack;
-
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
-import buildcraft.api.core.StackKey;
-import buildcraft.api.fuels.BuildcraftFuelRegistry;
-import buildcraft.api.fuels.ICoolant;
-import buildcraft.api.fuels.IFuel;
-import buildcraft.api.fuels.ISolidCoolant;
 
 /**
  *
