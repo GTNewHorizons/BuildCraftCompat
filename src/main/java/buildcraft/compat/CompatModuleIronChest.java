@@ -1,8 +1,8 @@
 package buildcraft.compat;
 
-import buildcraft.api.blueprints.*;
-import buildcraft.compat.ironchests.*;
-import cpw.mods.fml.common.*;
+import buildcraft.api.blueprints.Schematic;
+import buildcraft.compat.ironchests.SchematicIronChest;
+import cpw.mods.fml.common.Loader;
 
 public class CompatModuleIronChest extends CompatModuleBase {
 

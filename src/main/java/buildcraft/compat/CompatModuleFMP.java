@@ -1,11 +1,15 @@
 package buildcraft.compat;
 
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
 
-import buildcraft.api.blueprints.*;
-import buildcraft.compat.multipart.*;
-import codechicken.multipart.handler.*;
-import cpw.mods.fml.common.*;
+import buildcraft.api.blueprints.BuilderAPI;
+import buildcraft.compat.multipart.MultipartSchematics;
+import buildcraft.compat.multipart.SchematicMcMetaPart;
+import buildcraft.compat.multipart.SchematicMicroblock;
+import buildcraft.compat.multipart.SchematicMultipartBlock;
+import codechicken.multipart.handler.MultipartProxy;
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.Optional;
 
 public class CompatModuleFMP extends CompatModuleBase {
 
