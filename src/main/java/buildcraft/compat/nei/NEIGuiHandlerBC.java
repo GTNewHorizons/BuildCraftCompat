@@ -3,10 +3,10 @@ package buildcraft.compat.nei;
 import java.util.ArrayList;
 import java.util.List;
 
-import buildcraft.compat.forestry.pipes.gui.GuiPropolisPipe;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.item.ItemStack;
 
+import buildcraft.compat.forestry.pipes.gui.GuiPropolisPipe;
 import buildcraft.core.lib.gui.CompatGuiUtils;
 import buildcraft.core.lib.gui.GuiBuildCraft;
 import codechicken.nei.VisiblityData;

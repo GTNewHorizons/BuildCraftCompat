@@ -4,9 +4,6 @@ import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map.Entry;
 
-import codechicken.nei.ItemPanels;
-import forestry.api.apiculture.BeeManager;
-import forestry.api.apiculture.IBee;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -26,11 +23,14 @@ import buildcraft.core.lib.gui.GuiBuildCraft;
 import buildcraft.core.lib.gui.tooltips.ToolTip;
 import buildcraft.core.lib.gui.tooltips.ToolTipLine;
 import buildcraft.core.lib.gui.widgets.Widget;
+import codechicken.nei.ItemPanels;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import forestry.api.apiculture.BeeManager;
 import forestry.api.apiculture.EnumBeeType;
 import forestry.api.apiculture.IAlleleBeeSpecies;
 import forestry.api.apiculture.IApiaristTracker;
+import forestry.api.apiculture.IBee;
 import forestry.api.genetics.AlleleManager;
 import forestry.api.genetics.IAllele;
 import forestry.api.genetics.IAlleleSpecies;
@@ -94,12 +94,9 @@ public class GuiPropolisPipe extends GuiBuildCraft {
     public boolean handleDragNDrop(int mousex, int mousey, ItemStack draggedStack, int button) {
         int relativeX = mousex - guiLeft;
         int relativeY = mousey - guiTop;
-        return  getContainer().getWidgets().stream()
-                .filter(w -> w.isMouseOver(relativeX, relativeY))
-                .filter(w -> w instanceof SpeciesFilterSlot)
-                .findFirst()
-                .filter(value -> ((SpeciesFilterSlot) value).handleDragNDrop(draggedStack, button))
-                .isPresent();
+        return getContainer().getWidgets().stream().filter(w -> w.isMouseOver(relativeX, relativeY))
+                .filter(w -> w instanceof SpeciesFilterSlot).findFirst()
+                .filter(value -> ((SpeciesFilterSlot) value).handleDragNDrop(draggedStack, button)).isPresent();
     }
 
     class TypeFilterSlot extends Widget {
@@ -300,9 +297,9 @@ public class GuiPropolisPipe extends GuiBuildCraft {
                             }
 
                             IAlleleBeeSpecies next = (IAlleleBeeSpecies) entry2.getValue();
-//                            if (next.isSecret() && !(tracker.isDiscovered(next))) {
-//                                continue;
-//                            }
+                            // if (next.isSecret() && !(tracker.isDiscovered(next))) {
+                            // continue;
+                            // }
 
                             change = next;
                             break;
