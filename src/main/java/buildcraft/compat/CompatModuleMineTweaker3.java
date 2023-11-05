@@ -2,15 +2,15 @@ package buildcraft.compat;
 
 import java.lang.reflect.Field;
 
-import minetweaker.MineTweakerAPI;
-import minetweaker.api.item.IIngredient;
-import minetweaker.api.item.IngredientStack;
 import buildcraft.compat.minetweaker.AssemblyTable;
 import buildcraft.compat.minetweaker.Fuels;
 import buildcraft.compat.minetweaker.ProgrammingTable;
 import buildcraft.compat.minetweaker.Refinery;
 import buildcraft.core.recipes.FlexibleRecipeIngredientOreStack;
 import cpw.mods.fml.relauncher.ReflectionHelper;
+import minetweaker.MineTweakerAPI;
+import minetweaker.api.item.IIngredient;
+import minetweaker.api.item.IngredientStack;
 
 public class CompatModuleMineTweaker3 extends CompatModuleBase {
 

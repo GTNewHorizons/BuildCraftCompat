@@ -1,7 +1,5 @@
 package buildcraft.compat.waila;
 
-import mcp.mobius.waila.api.IWailaRegistrar;
-
 import net.minecraft.block.Block;
 
 import buildcraft.compat.CompatModuleWAILA;
@@ -10,6 +8,7 @@ import buildcraft.robotics.EntityRobot;
 import buildcraft.transport.BlockGenericPipe;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Optional;
+import mcp.mobius.waila.api.IWailaRegistrar;
 
 public final class WailaCallback {
 

@@ -9,22 +9,21 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import net.minecraft.item.ItemStack;
+
+import buildcraft.api.recipes.BuildcraftRecipeRegistry;
+import buildcraft.api.recipes.IFlexibleRecipe;
+import buildcraft.api.recipes.IFlexibleRecipeViewable;
+import buildcraft.compat.CompatModuleMineTweaker3;
 import minetweaker.IUndoableAction;
 import minetweaker.MineTweakerAPI;
 import minetweaker.annotations.ModOnly;
 import minetweaker.api.item.IIngredient;
 import minetweaker.api.item.IItemStack;
 import minetweaker.api.minecraft.MineTweakerMC;
-
-import net.minecraft.item.ItemStack;
-
 import stanhebben.zenscript.annotations.Optional;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
-import buildcraft.api.recipes.BuildcraftRecipeRegistry;
-import buildcraft.api.recipes.IFlexibleRecipe;
-import buildcraft.api.recipes.IFlexibleRecipeViewable;
-import buildcraft.compat.CompatModuleMineTweaker3;
 
 /**
  *

@@ -1,13 +1,12 @@
 package buildcraft.compat;
 
+import com.bluepowermod.api.BPApi;
+
 import buildcraft.api.statements.IActionExternal;
 import buildcraft.api.statements.ITriggerExternal;
 import buildcraft.api.statements.StatementManager;
 import buildcraft.compat.bluepower.BRProviderBluePower;
 import buildcraft.compat.redlogic.BRProviderRedLogic;
-
-import com.bluepowermod.api.BPApi;
-
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Optional;
 

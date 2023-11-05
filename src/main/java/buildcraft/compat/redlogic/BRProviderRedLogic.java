@@ -3,8 +3,6 @@ package buildcraft.compat.redlogic;
 import java.util.Collection;
 import java.util.HashSet;
 
-import mods.immibis.redlogic.api.wiring.IBundledWire;
-
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 
@@ -16,6 +14,7 @@ import buildcraft.api.statements.ITriggerExternal;
 import buildcraft.api.statements.ITriggerInternal;
 import buildcraft.api.statements.ITriggerProvider;
 import buildcraft.compat.CompatModuleBundledRedstone;
+import mods.immibis.redlogic.api.wiring.IBundledWire;
 
 public class BRProviderRedLogic implements ITriggerProvider, IActionProvider {
 

@@ -3,9 +3,8 @@ package buildcraft.compat;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 
-import uk.co.qmunity.lib.part.IPart;
-import uk.co.qmunity.lib.part.ITilePartHolder;
-import uk.co.qmunity.lib.part.compat.MultipartCompatibility;
+import com.bluepowermod.part.tube.PneumaticTube;
+
 import buildcraft.BuildCraftCompat;
 import buildcraft.api.transport.IInjectable;
 import buildcraft.compat.bluepower.BPPneumaticTubeInjectable;
@@ -13,13 +12,13 @@ import buildcraft.compat.cofh.ItemDuctInjectable;
 import buildcraft.compat.enderio.ItemConduitInjectable;
 import buildcraft.core.CompatHooks;
 import cofh.api.transport.IItemDuct;
-
-import com.bluepowermod.part.tube.PneumaticTube;
-
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Optional;
 import crazypants.enderio.conduit.IConduitBundle;
 import crazypants.enderio.conduit.item.IItemConduit;
+import uk.co.qmunity.lib.part.IPart;
+import uk.co.qmunity.lib.part.ITilePartHolder;
+import uk.co.qmunity.lib.part.compat.MultipartCompatibility;
 
 public class CompatHooksImpl extends CompatHooks {
 

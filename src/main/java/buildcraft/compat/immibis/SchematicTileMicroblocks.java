@@ -35,9 +35,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Set;
 
-import mods.immibis.microblocks.api.EnumPosition;
-import mods.immibis.microblocks.api.Part;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -56,6 +53,8 @@ import buildcraft.api.core.IInvSlot;
 import buildcraft.api.core.JavaTools;
 import buildcraft.core.blueprints.SchematicRegistry;
 import buildcraft.core.proxy.CoreProxy;
+import mods.immibis.microblocks.api.EnumPosition;
+import mods.immibis.microblocks.api.Part;
 
 public class SchematicTileMicroblocks extends SchematicTile {
 

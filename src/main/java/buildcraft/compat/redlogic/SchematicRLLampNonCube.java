@@ -6,11 +6,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 
+import com.google.common.collect.Sets;
+
 import buildcraft.api.blueprints.IBuilderContext;
 import buildcraft.api.blueprints.SchematicTile;
 import buildcraft.api.core.BlockIndex;
-
-import com.google.common.collect.Sets;
 
 public class SchematicRLLampNonCube extends SchematicTile {
 

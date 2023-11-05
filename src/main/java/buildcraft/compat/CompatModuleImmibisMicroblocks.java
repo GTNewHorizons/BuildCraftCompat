@@ -3,8 +3,6 @@ package buildcraft.compat;
 import java.util.HashSet;
 import java.util.Set;
 
-import mods.immibis.core.api.multipart.ICoverableTile;
-
 import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -18,6 +16,7 @@ import buildcraft.compat.immibis.SchematicTileMicroblocksBase;
 import buildcraft.core.blueprints.SchematicRegistry;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Optional;
+import mods.immibis.core.api.multipart.ICoverableTile;
 
 public class CompatModuleImmibisMicroblocks extends CompatModuleBase {
 

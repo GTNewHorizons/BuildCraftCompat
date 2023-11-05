@@ -3,10 +3,10 @@ package buildcraft.compat.bluepower;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import com.bluepowermod.api.tube.IPneumaticTube;
+
 import buildcraft.api.core.EnumColor;
 import buildcraft.api.transport.IInjectable;
-
-import com.bluepowermod.api.tube.IPneumaticTube;
 
 public class BPPneumaticTubeInjectable implements IInjectable {
 

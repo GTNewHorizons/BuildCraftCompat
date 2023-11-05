@@ -6,11 +6,11 @@ import java.util.Set;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 
+import com.google.common.collect.Sets;
+
 import buildcraft.api.blueprints.IBuilderContext;
 import buildcraft.api.blueprints.SchematicTile;
 import buildcraft.api.core.BlockIndex;
-
-import com.google.common.collect.Sets;
 
 public class SchematicRLButton extends SchematicTile {
 

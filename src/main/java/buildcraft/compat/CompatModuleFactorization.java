@@ -4,14 +4,13 @@ import java.util.Map;
 
 import net.minecraft.tileentity.TileEntity;
 
+import com.google.common.collect.MapMaker;
+
 import buildcraft.BuildCraftCompat;
 import buildcraft.api.blueprints.SchematicTile;
 import buildcraft.compat.factorization.ChargeEnergyReceiver;
 import buildcraft.compat.factorization.SchematicFZBarrel;
 import buildcraft.compat.factorization.SchematicFZBase;
-
-import com.google.common.collect.MapMaker;
-
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Optional;
 import factorization.api.IChargeConductor;
