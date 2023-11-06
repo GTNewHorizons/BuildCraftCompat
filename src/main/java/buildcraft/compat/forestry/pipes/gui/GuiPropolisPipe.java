@@ -6,13 +6,16 @@ import java.util.Map.Entry;
 
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
+import buildcraft.BuildCraftCompat;
 import buildcraft.compat.CompatModuleForestry;
 import buildcraft.compat.forestry.pipes.EnumFilterType;
 import buildcraft.compat.forestry.pipes.PipeItemsPropolis;
@@ -21,11 +24,14 @@ import buildcraft.core.lib.gui.GuiBuildCraft;
 import buildcraft.core.lib.gui.tooltips.ToolTip;
 import buildcraft.core.lib.gui.tooltips.ToolTipLine;
 import buildcraft.core.lib.gui.widgets.Widget;
+import codechicken.nei.ItemPanels;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import forestry.api.apiculture.BeeManager;
 import forestry.api.apiculture.EnumBeeType;
 import forestry.api.apiculture.IAlleleBeeSpecies;
 import forestry.api.apiculture.IApiaristTracker;
+import forestry.api.apiculture.IBee;
 import forestry.api.genetics.AlleleManager;
 import forestry.api.genetics.IAllele;
 import forestry.api.genetics.IAlleleSpecies;
@@ -84,6 +90,14 @@ public class GuiPropolisPipe extends GuiBuildCraft {
         super.drawGuiContainerForegroundLayer(mouseX, mouseY);
         String title = StatCollector.translateToLocal("item.buildcraftPipe.pipeitemspropolis.name");
         fontRendererObj.drawString(title, getCenteredOffset(title), 6, 0x303030);
+    }
+
+    public boolean handleDragNDrop(int mousex, int mousey, ItemStack draggedStack, int button) {
+        int relativeX = mousex - guiLeft;
+        int relativeY = mousey - guiTop;
+        return getContainer().getWidgets().stream().filter(w -> w.isMouseOver(relativeX, relativeY))
+                .filter(w -> w instanceof SpeciesFilterSlot).findFirst()
+                .filter(value -> ((SpeciesFilterSlot) value).handleDragNDrop(draggedStack, button)).isPresent();
     }
 
     class TypeFilterSlot extends Widget {
@@ -237,6 +251,9 @@ public class GuiPropolisPipe extends GuiBuildCraft {
 
         @Override
         public boolean handleMouseClick(int mouseX, int mouseY, int mouseButton) {
+            if (isNEIDragInProgress()) {
+                return false;
+            }
             IAlleleSpecies change = null;
             if (mouseButton == 1) {
                 change = null;
@@ -253,8 +270,10 @@ public class GuiPropolisPipe extends GuiBuildCraft {
 
             } else {
 
+                boolean isShiftKeyDown = Keyboard.isKeyDown(Keyboard.KEY_LSHIFT);
                 Iterator<Entry<String, IAllele>> it = AlleleManager.alleleRegistry.getRegisteredAlleles().entrySet()
                         .iterator();
+                IAlleleBeeSpecies beforeChosen = null;
                 while (it.hasNext()) {
                     Entry<String, IAllele> entry = it.next();
                     if (!(entry.getValue() instanceof IAlleleBeeSpecies)) {
@@ -263,22 +282,27 @@ public class GuiPropolisPipe extends GuiBuildCraft {
 
                     IAlleleBeeSpecies species = (IAlleleBeeSpecies) entry.getValue();
                     if (!species.getUID().equals(getSpecies().getUID())) {
+                        beforeChosen = species;
                         continue;
                     }
+                    // found previously chosen species
+                    if (isShiftKeyDown) {
+                        change = beforeChosen;
+                    } else {
+                        while (it.hasNext()) {
+                            Entry<String, IAllele> entry2 = it.next();
+                            if (!(entry2.getValue() instanceof IAlleleBeeSpecies)) {
+                                continue;
+                            }
 
-                    while (it.hasNext()) {
-                        Entry<String, IAllele> entry2 = it.next();
-                        if (!(entry2.getValue() instanceof IAlleleBeeSpecies)) {
-                            continue;
+                            IAlleleBeeSpecies next = (IAlleleBeeSpecies) entry2.getValue();
+                            // if (next.isSecret() && !(tracker.isDiscovered(next))) {
+                            // continue;
+                            // }
+
+                            change = next;
+                            break;
                         }
-
-                        IAlleleBeeSpecies next = (IAlleleBeeSpecies) entry2.getValue();
-                        // if (next.isSecret() && !tracker.isDiscovered(next)) {
-                        // continue;
-                        // }
-
-                        change = next;
-                        break;
                     }
 
                     break;
@@ -286,6 +310,23 @@ public class GuiPropolisPipe extends GuiBuildCraft {
             }
             pipeLogic.setSpeciesFilter(orientation, pattern, allele, change);
             return true;
+        }
+
+        private boolean isNEIDragInProgress() {
+            if (!BuildCraftCompat.isLoaded("NotEnoughItems")) return false;
+            ItemStack neiDraggedStack = ItemPanels.itemPanel.draggedStack;
+            // drag is handled by #handleDragNDrop
+            return neiDraggedStack != null;
+        }
+
+        public boolean handleDragNDrop(ItemStack draggedStack, int button) {
+            IBee member = BeeManager.beeRoot.getMember(draggedStack);
+            if (member != null) {
+                IAlleleBeeSpecies speciesDragged = member.getGenome().getPrimary();
+                pipeLogic.setSpeciesFilter(orientation, pattern, allele, speciesDragged);
+                return true;
+            }
+            return false;
         }
     }
 }
