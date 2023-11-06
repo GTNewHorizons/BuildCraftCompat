@@ -15,6 +15,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
+import buildcraft.BuildCraftCompat;
 import buildcraft.compat.CompatModuleForestry;
 import buildcraft.compat.forestry.pipes.EnumFilterType;
 import buildcraft.compat.forestry.pipes.PipeItemsPropolis;
@@ -250,9 +251,7 @@ public class GuiPropolisPipe extends GuiBuildCraft {
 
         @Override
         public boolean handleMouseClick(int mouseX, int mouseY, int mouseButton) {
-            ItemStack neiDraggedStack = ItemPanels.itemPanel.draggedStack;
-            if (neiDraggedStack != null) {
-                // drag is handled by #handleDragNDrop
+            if (isNEIDragInProgress()) {
                 return false;
             }
             IAlleleSpecies change = null;
@@ -311,6 +310,13 @@ public class GuiPropolisPipe extends GuiBuildCraft {
             }
             pipeLogic.setSpeciesFilter(orientation, pattern, allele, change);
             return true;
+        }
+
+        private boolean isNEIDragInProgress() {
+            if (!BuildCraftCompat.isLoaded("NotEnoughItems")) return false;
+            ItemStack neiDraggedStack = ItemPanels.itemPanel.draggedStack;
+            // drag is handled by #handleDragNDrop
+            return neiDraggedStack != null;
         }
 
         public boolean handleDragNDrop(ItemStack draggedStack, int button) {
