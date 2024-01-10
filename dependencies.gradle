@@ -1,29 +1,29 @@
 // Add your dependencies here
 
 dependencies {
-    api("com.github.GTNewHorizons:BuildCraft:7.1.36:dev")
-    api("com.github.GTNewHorizons:CodeChickenLib:1.1.8:dev")
+    api("com.github.GTNewHorizons:BuildCraft:7.1.39:dev")
+    api("com.github.GTNewHorizons:CodeChickenLib:1.2.0:dev")
     implementation("curse.maven:cofh-lib-220333:2388748")
 
-    compileOnly("com.github.GTNewHorizons:ProjectRed:4.8.0-GTNH:dev") {
+    compileOnly("com.github.GTNewHorizons:ProjectRed:4.9.3-GTNH:dev") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:waila:1.6.2:api") {
+    compileOnly("com.github.GTNewHorizons:waila:1.6.5:api") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:ForgeMultipart:1.4.0:dev") {
+    compileOnly("com.github.GTNewHorizons:ForgeMultipart:1.4.7:dev") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:NotEnoughItems:2.4.9-GTNH:dev") {
+    compileOnly("com.github.GTNewHorizons:NotEnoughItems:2.5.4-GTNH:dev") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:ForestryMC:4.6.14:api") {
+    compileOnly("com.github.GTNewHorizons:ForestryMC:4.8.2:api") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:EnderIO:2.5.3:dev") {
+    compileOnly("com.github.GTNewHorizons:EnderIO:2.6.3:dev") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:CraftTweaker:3.2.13:dev") {
+    compileOnly("com.github.GTNewHorizons:CraftTweaker:3.3.0:dev") {
         transitive = false
     }
     compileOnly("com.github.GTNewHorizons:ZenScript:1.0.0-GTNH") {
@@ -32,10 +32,10 @@ dependencies {
     compileOnly("com.github.GTNewHorizons:QmunityLib:0.1.115:dev") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:Applied-Energistics-2-Unofficial:rv3-beta-279-GTNH:dev") {
+    compileOnly("com.github.GTNewHorizons:Applied-Energistics-2-Unofficial:rv3-beta-310-GTNH:dev") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:OpenComputers:1.9.19-GTNH:dev") {
+    compileOnly("com.github.GTNewHorizons:OpenComputers:1.10.6-GTNH:dev") {
         transitive = false
     }
     compileOnly("curse.maven:minefactory-reloaded-66672:2366150") {
