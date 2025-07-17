@@ -1,41 +1,41 @@
 // Add your dependencies here
 
 dependencies {
-    api("com.github.GTNewHorizons:BuildCraft:7.1.39:dev")
+    api("com.github.GTNewHorizons:BuildCraft:7.1.44:dev")
     api("com.github.GTNewHorizons:CodeChickenCore:1.4.3:dev")
     implementation("curse.maven:cofh-lib-220333:2388748")
 
-    compileOnly("com.github.GTNewHorizons:ProjectRed:4.9.3-GTNH:dev") {
+    compileOnly("com.github.GTNewHorizons:ProjectRed:4.11.5-GTNH:dev") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:waila:1.6.5:api") {
+    compileOnly("com.github.GTNewHorizons:waila:1.8.12:api") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:ForgeMultipart:1.4.7:dev") {
+    compileOnly("com.github.GTNewHorizons:ForgeMultipart:1.6.7:dev") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:NotEnoughItems:2.5.4-GTNH:dev") {
+    compileOnly("com.github.GTNewHorizons:NotEnoughItems:2.7.64-GTNH:dev") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:ForestryMC:4.8.2:api") {
+    compileOnly("com.github.GTNewHorizons:ForestryMC:4.10.14:api") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:EnderIO:2.6.3:dev") {
+    compileOnly("com.github.GTNewHorizons:EnderIO:2.9.18:dev") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:CraftTweaker:3.3.0:dev") {
+    compileOnly("com.github.GTNewHorizons:CraftTweaker:3.4.2:dev") {
         transitive = false
     }
     compileOnly("com.github.GTNewHorizons:ZenScript:1.0.0-GTNH") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:QmunityLib:0.1.115:dev") {
+    compileOnly("com.github.GTNewHorizons:QmunityLib:0.3.0:dev") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:Applied-Energistics-2-Unofficial:rv3-beta-310-GTNH:dev") {
+    compileOnly("com.github.GTNewHorizons:Applied-Energistics-2-Unofficial:rv3-beta-660-GTNH:dev") {
         transitive = false
     }
-    compileOnly("com.github.GTNewHorizons:OpenComputers:1.10.6-GTNH:dev") {
+    compileOnly("com.github.GTNewHorizons:OpenComputers:1.11.16-GTNH:dev") {
         transitive = false
     }
     compileOnly("curse.maven:minefactory-reloaded-66672:2366150") {
@@ -51,7 +51,7 @@ dependencies {
     compileOnly("curse.maven:factorization-unofficial-392300:2990432") {
         transitive = false
     }
-    compileOnly("curse.maven:blue-power-2251307:2251307") {
+    compileOnly("curse.maven:blue-power-223099:2251307") {
         transitive = false
     }
     compileOnly deobf("https://www.immibis.com/mcmoddl/files/redlogic-59.1.13.jar", "redlogic-59.1.13")
