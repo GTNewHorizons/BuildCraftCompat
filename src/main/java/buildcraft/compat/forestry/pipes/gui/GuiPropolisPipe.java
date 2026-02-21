@@ -57,7 +57,7 @@ public class GuiPropolisPipe extends GuiBuildCraft {
             pipeLogic.requestFilterSet();
         }
 
-        xSize = 175;
+        xSize = 176;
         ySize = 225;
 
         for (int i = 0; i < 6; i++) {
@@ -88,7 +88,9 @@ public class GuiPropolisPipe extends GuiBuildCraft {
     @Override
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
         super.drawGuiContainerForegroundLayer(mouseX, mouseY);
-        String title = StatCollector.translateToLocal("item.buildcraftPipe.pipeitemspropolis.name");
+        String titleKey = "gui.buildcraftPipe.pipeitemspropolis.name.title";
+        String title = StatCollector.canTranslate(titleKey) ? StatCollector.translateToLocal(titleKey)
+                : StatCollector.translateToLocal("item.buildcraftPipe.pipeitemspropolis.name");
         fontRendererObj.drawString(title, getCenteredOffset(title), 6, 0x303030);
     }
 
