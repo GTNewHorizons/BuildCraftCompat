@@ -63,7 +63,9 @@ public class RecipeHandlerIntegrationTable extends RecipeHandlerBase {
 
     public void drawExtras(final int recipe) {
         GuiDraw.drawStringC(
-                ((CachedIntegrationTableRecipe) this.arecipes.get(recipe)).energy + " RF",
+                StatCollector.translateToLocalFormatted(
+                        "nei.energy.rf",
+                        ((CachedIntegrationTableRecipe) this.arecipes.get(recipe)).energy),
                 108,
                 10,
                 8421504,
